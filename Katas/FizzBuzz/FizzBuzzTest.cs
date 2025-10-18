@@ -74,6 +74,20 @@ namespace Katas
 
             resultado[indice - 1].Should().Be(palabraEsperada);
         }
+
+        [Theory]
+        [InlineData(22)]
+        [InlineData(66)]
+        [InlineData(88)]
+        public void Debe_ObtenerFizzBuzzWhizz_DevolverBangSiLosNumerosSonMultiplosDeOnce(int indice)
+        {
+            var FizzBuzzWhizz = new FizzBuzzWhizz();
+            var palabraEsperada = "Bang";
+
+            var resultado = FizzBuzzWhizz.ObtenerFizzBuzzWhizz();
+
+            resultado[indice - 1].Should().Be(palabraEsperada);
+        }
     }
 
     internal class FizzBuzzWhizz
