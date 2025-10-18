@@ -8,7 +8,7 @@ namespace Katas
         [Theory]
         [InlineData(3)]
         [InlineData(9)]
-        [InlineData(99)]
+        [InlineData(27)]
         public void Debe_ObtenerFizzBuzzWhizz_DevolverFizzSiSonNumerosMultiplosDeTres(int indice)
         {
             var fizzBuzz = new FizzBuzzWhizz();
@@ -77,12 +77,25 @@ namespace Katas
 
         [Theory]
         [InlineData(22)]
-        [InlineData(66)]
+        [InlineData(44)]
         [InlineData(88)]
         public void Debe_ObtenerFizzBuzzWhizz_DevolverBangSiLosNumerosSonMultiplosDeOnce(int indice)
         {
             var FizzBuzzWhizz = new FizzBuzzWhizz();
             var palabraEsperada = "Bang";
+
+            var resultado = FizzBuzzWhizz.ObtenerFizzBuzzWhizz();
+
+            resultado[indice - 1].Should().Be(palabraEsperada);
+        }
+
+        [Theory]
+        [InlineData(66)]
+        [InlineData(99)]
+        public void Debe_ObtenerFizzBuzzWhizz_DevolverFizzBangSiLosNumerosSonMultiplosDeTresYOnce(int indice)
+        {
+            var FizzBuzzWhizz = new FizzBuzzWhizz();
+            var palabraEsperada = "FizzBang";
 
             var resultado = FizzBuzzWhizz.ObtenerFizzBuzzWhizz();
 
@@ -96,7 +109,8 @@ namespace Katas
         {
            { 3, "Fizz" },
            { 5, "Buzz" },
-           { 7, "Whizz" }
+           { 7, "Whizz" },
+           { 11, "Bang" }
         };
 
         public List<object> ObtenerFizzBuzzWhizz()
