@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
+using Logica;
 
-namespace Katas.AnioBisiesto.Test
+
+namespace Katas.AnioBisiestoTests
 {
     public class AnioBisiestoTest
     {
