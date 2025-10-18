@@ -7,7 +7,7 @@ namespace Katas
 
         [Theory]
         [InlineData(3)]
-        [InlineData(30)]
+        [InlineData(9)]
         [InlineData(99)]
         public void Debe_ObtenerFizzBuzz_DevolverFizzSiSonNumerosMultiplosDeTres(int indice)
         {
