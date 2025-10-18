@@ -17,13 +17,16 @@ namespace Katas
 
     internal class FizzBuzz
     {
-        public FizzBuzz()
+        public List<int> ObtenerFizzBuzz()
         {
-        }
+            List<int> numeros = new List<int>();
 
-        internal object ObtenerFizzBuzz()
-        {
-            throw new NotImplementedException();
+            for(int i= 1; i <= 100; i++) 
+            {
+                numeros.Add(i);
+            }
+
+            return numeros;
         }
 
     }
