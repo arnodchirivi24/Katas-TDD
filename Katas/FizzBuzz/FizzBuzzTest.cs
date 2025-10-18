@@ -65,9 +65,10 @@ namespace Katas
 
         public string ObtenerTextoFizzBuzz(int indice)
         {
-            if (indice % 3 == 0) return "Fizz";            
-            if (indice % 5 == 0) return "Buzz";
-            return "";
+            string texto = "";
+            if (indice % 3 == 0) texto += "Fizz";            
+            if (indice % 5 == 0) texto += "Buzz";
+            return texto;
         }
     }
 
