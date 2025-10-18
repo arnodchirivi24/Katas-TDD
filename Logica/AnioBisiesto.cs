@@ -4,7 +4,7 @@
     {
         public bool EsAnioBisiesto(int anio)
         {
-            return anio % 4 == 0;
+            return (anio % 4 == 0 && anio % 100 !=0);
         }
     }
 }
