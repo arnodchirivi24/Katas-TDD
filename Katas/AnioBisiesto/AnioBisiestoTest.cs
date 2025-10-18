@@ -35,5 +35,15 @@ namespace Katas.AnioBisiestoTests
 
             esAnioBisiesto.Should().BeFalse();
         }
+
+        [Fact]
+        public void Debe_EsBisiesto_DevolverVerdaderocuandoElAnioEsDivisiblePorCuatroPeroNoEsDivisiblePorCien()
+        {
+            var anioBisiesto = new AnioBisiesto();
+
+            var esAnioBisiesto = anioBisiesto.EsAnioBisiesto(2000);
+
+            esAnioBisiesto.Should().BeTrue();
+        }
     }
 }
