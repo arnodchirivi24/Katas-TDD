@@ -1,6 +1,7 @@
 ﻿using FluentAssertions;
+using Logica;
 
-namespace Katas.FizzBuzz
+namespace Katas.FizzBuzz.Tests
 {
     public class FizzBuzzTest
     {

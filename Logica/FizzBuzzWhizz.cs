@@ -1,6 +1,6 @@
-﻿namespace Katas
+﻿namespace Logica
 {
-    internal class FizzBuzzWhizz
+    public class FizzBuzzWhizz
     {
         private readonly Dictionary<int, string> _palabrasEspeciales = new Dictionary<int, string>
         {
