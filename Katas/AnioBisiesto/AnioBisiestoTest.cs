@@ -7,7 +7,7 @@ namespace Katas.AnioBisiestoTests
     public class AnioBisiestoTest
     {
         [Fact]
-        public void Debe_EsBisiesto_DevolverTrueCuandoElAnioEsDivisiblePorCuatro()
+        public void Debe_EsBisiesto_DevolverVerdaderoCuandoElAnioEsDivisiblePorCuatro()
         {
             var anioBisiesto = new AnioBisiesto();
 
@@ -17,7 +17,7 @@ namespace Katas.AnioBisiestoTests
         }
 
         [Fact]
-        public void Debe_EsBisiesto_DevolverFalseCuandoElAnioNoEsDivisiblePorCuatro()
+        public void Debe_EsBisiesto_DevolverFalsoCuandoElAnioNoEsDivisiblePorCuatro()
         {
             var anioBisiesto = new AnioBisiesto();
 
