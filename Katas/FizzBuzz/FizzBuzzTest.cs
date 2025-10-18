@@ -13,13 +13,27 @@ namespace Katas
 
             resultadoNumerosUnoAlCien.Should().BeEquivalentTo(Enumerable.Range(1, 100).ToList());
         }
+
+        [Theory]
+        [InlineData(3)]
+        [InlineData(30)]
+        [InlineData(99)]
+        public void Debe_ObtenerFizzBuzz_DevolverFizzSiSonNumerosMultiplosDeTres(int indice)
+        {
+            var fizzBuzz = new FizzBuzz();
+            var palabraEsperada = "Fizz";
+
+            var resultado = fizzBuzz.ObtenerFizzBuzz();
+
+            resultado[indice - 1].Should().Be(palabraEsperada);
+        }
     }
 
     internal class FizzBuzz
     {
-        public List<int> ObtenerFizzBuzz()
+        public List<object> ObtenerFizzBuzz()
         {
-            List<int> numeros = new List<int>();
+            List<object> numeros = new List<object>();
 
             for(int i= 1; i <= 100; i++) 
             {

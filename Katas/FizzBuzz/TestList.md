@@ -1,4 +1,4 @@
-- [] Debe imprimir los numeros del 1 al 100
+- [x] Debe imprimir los numeros del 1 al 100
 - [] Debe imprimir "Fizz" para los múltiplos de 3
 - [] Debe imprimir "Buzz" para los múltiplos de 5
 - [] Debe imprimir "FizzBuzz" para los múltiplos de 3 y 5
