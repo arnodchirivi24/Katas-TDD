@@ -125,7 +125,12 @@ namespace Katas
            { 11, "Bang" }
         };
 
-        private readonly string _palabraFizzBuzzWhizzBang = "FizzBuzzWhizzBang";
+        private string _palabraDeSalida { get; }
+
+        public FizzBuzzWhizz()
+        {
+            _palabraDeSalida = string.Concat(_palabrasEspeciales.Values);
+        }
 
         public List<object> ObtenerFizzBuzzWhizz()
         {
@@ -135,13 +140,13 @@ namespace Katas
             {
                 string texto = ObtenerTextoFizzBuzzWhizz(i);
                 resultadoFizzBuzz.Add(string.IsNullOrEmpty(texto) ? i: texto);
-                if (texto == _palabraFizzBuzzWhizzBang) break;
+                if (texto == _palabraDeSalida) break;
             }
 
             return resultadoFizzBuzz;
         }
 
-        public string ObtenerTextoFizzBuzzWhizz(int indice)
+        private string ObtenerTextoFizzBuzzWhizz(int indice)
         {    
             string texto = "";
 
