@@ -37,7 +37,14 @@ namespace Katas
 
             for(int i= 1; i <= 100; i++) 
             {
-                numeros.Add(i);
+                if (i % 3 == 0)
+                {
+                    numeros.Add("Fizz");
+                }
+                else
+                {
+                    numeros.Add(i);
+                }
             }
 
             return numeros;
