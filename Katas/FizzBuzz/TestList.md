@@ -2,7 +2,7 @@
 - [x] Debe imprimir "Fizz" para los múltiplos de 3
 - [x] Debe imprimir "Buzz" para los múltiplos de 5
 - [x] Debe imprimir "FizzBuzz" para los múltiplos de 3 y 5
-- [] Debe imprimir "Whizz" para los multiplos de 7
+- [x] Debe imprimir "Whizz" para los multiplos de 7
 - [] Debe imprimir "Bang" para los multiplos de 11
-- [] Debe imprimir "FizzWhizz" para los múltiplos de 3 y 7
+- [x] Debe imprimir "FizzWhizz" para los múltiplos de 3 y 7
 - [] Debe imprimirse un array de objetos hasta que llega al string FizzBuzzWhizzBang
