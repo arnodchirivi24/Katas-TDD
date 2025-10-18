@@ -21,7 +21,7 @@ namespace Katas.AnioBisiestoTests
         {
             var anioBisiesto = new AnioBisiesto();
 
-            var esAnioBisiesto = anioBisiesto.EsAnioBisiesto(2024);
+            var esAnioBisiesto = anioBisiesto.EsAnioBisiesto(2025);
 
             esAnioBisiesto.Should().BeFalse();
         }

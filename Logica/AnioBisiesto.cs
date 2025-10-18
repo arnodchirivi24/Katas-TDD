@@ -2,9 +2,9 @@
 {
     public class AnioBisiesto
     {
-        public bool EsAnioBisiesto(int v)
+        public bool EsAnioBisiesto(int anio)
         {
-            return true;
+            return anio % 4 == 0;
         }
     }
 }
