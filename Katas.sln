@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas", "Katas\Katas.csproj", "{7071BEBB-68A2-4A33-8B75-D5D1F01BA2A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9F752A47-5FF0-42D1-8317-AEAA6E6D72D4} = {9F752A47-5FF0-42D1-8317-AEAA6E6D72D4}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{9F752A47-5FF0-42D1-8317-AEAA6E6D72D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{7071BEBB-68A2-4A33-8B75-D5D1F01BA2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7071BEBB-68A2-4A33-8B75-D5D1F01BA2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7071BEBB-68A2-4A33-8B75-D5D1F01BA2A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F752A47-5FF0-42D1-8317-AEAA6E6D72D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F752A47-5FF0-42D1-8317-AEAA6E6D72D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F752A47-5FF0-42D1-8317-AEAA6E6D72D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F752A47-5FF0-42D1-8317-AEAA6E6D72D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
