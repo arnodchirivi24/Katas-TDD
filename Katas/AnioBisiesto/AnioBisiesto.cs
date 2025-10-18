@@ -5,7 +5,7 @@ namespace Katas.AnioBisiesto
     {
         internal bool EsAnioBisiesto(int v)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
