@@ -27,6 +27,20 @@ namespace Katas
 
             resultado[indice - 1].Should().Be(palabraEsperada);
         }
+
+        [Theory]
+        [InlineData(5)]
+        [InlineData(85)]
+        [InlineData(95)]
+        public void Debe_ObtenerFizzBuzz_DevolverBuzzSiSonNumerosMultiplosDeCinco(int indice)
+        {
+            var fizzBuzz = new FizzBuzz();
+            var palabraEsperada = "Buzz";
+
+            var resultado = fizzBuzz.ObtenerFizzBuzz();
+
+            resultado[indice - 1].Should().Be(palabraEsperada);
+        }
     }
 
     internal class FizzBuzz
