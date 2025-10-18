@@ -6,4 +6,4 @@
 - [x] Debe imprimir "Bang" para los multiplos de 11
 - [x] Debe imprimir "FizzWhizz" para los múltiplos de 3 y 7
 - [x] Debe imprimir "FizzBang" para los multiplos de 3 y 11
-- [] Debe imprimirse un array de objetos hasta que llega al string FizzBuzzWhizzBang
+- [x] Debe imprimirse un array de objetos hasta que llega al string FizzBuzzWhizzBang
