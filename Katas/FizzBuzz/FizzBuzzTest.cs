@@ -81,10 +81,10 @@ namespace Katas
         [InlineData(88)]
         public void Debe_ObtenerFizzBuzzWhizz_DevolverBangSiLosNumerosSonMultiplosDeOnce(int indice)
         {
-            var FizzBuzzWhizz = new FizzBuzzWhizz();
+            var fizzBuzzWhizz = new FizzBuzzWhizz();
             var palabraEsperada = "Bang";
 
-            var resultado = FizzBuzzWhizz.ObtenerFizzBuzzWhizz();
+            var resultado = fizzBuzzWhizz.ObtenerFizzBuzzWhizz();
 
             resultado[indice - 1].Should().Be(palabraEsperada);
         }
@@ -94,12 +94,24 @@ namespace Katas
         [InlineData(99)]
         public void Debe_ObtenerFizzBuzzWhizz_DevolverFizzBangSiLosNumerosSonMultiplosDeTresYOnce(int indice)
         {
-            var FizzBuzzWhizz = new FizzBuzzWhizz();
+            var fizzBuzzWhizz = new FizzBuzzWhizz();
             var palabraEsperada = "FizzBang";
 
-            var resultado = FizzBuzzWhizz.ObtenerFizzBuzzWhizz();
+            var resultado = fizzBuzzWhizz.ObtenerFizzBuzzWhizz();
 
             resultado[indice - 1].Should().Be(palabraEsperada);
+        }
+
+        [Fact]
+        public void Debe_ObtenerFizzBuzzWhizz_TenerEnLaUltimaPosicionDelResultadoLaPalabra_FizzBuzzWhizzBang()
+        {
+            var fizzBuzzWhizz = new FizzBuzzWhizz();
+            var palabraEsperada = "FizzBuzzWhizzBang";
+
+            var resultado = fizzBuzzWhizz.ObtenerFizzBuzzWhizz();
+            var ultimoElemento = resultado.Count() - 1;
+
+            resultado[ultimoElemento].Should().Be(palabraEsperada);
         }
     }
 
