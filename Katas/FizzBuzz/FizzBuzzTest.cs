@@ -38,26 +38,24 @@ namespace Katas
     {
         public List<object> ObtenerFizzBuzz()
         {
-            List<object> numeros = new List<object>();
+            List<object> resultadoFizzBuzz = new List<object>();
 
             for(int i= 1; i <= 100; i++) 
             {
-                if (i % 3 == 0)
-                {
-                    numeros.Add("Fizz");
-                }
-                else if (i % 5 == 0)
-                {
-                    numeros.Add("Buzz");
-                }
-                else
-                {
-                    numeros.Add(i);
-                }
+                string texto = ObtenerTextoFizzBuzz(i);
+                resultadoFizzBuzz.Add(string.IsNullOrEmpty(texto) ? i: texto);
             }
 
-            return numeros;
+            return resultadoFizzBuzz;
         }
 
+        public string ObtenerTextoFizzBuzz(int indice)
+        {
+            if (indice % 3 == 0) return "Fizz";            
+            if (indice % 5 == 0) return "Buzz";
+            return "";
+        }
     }
+
+
 }
