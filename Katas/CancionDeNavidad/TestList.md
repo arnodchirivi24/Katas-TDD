@@ -3,4 +3,4 @@
 - [x] Debe en la segunda linea de cada estrofa tener la frase "My true love sent to me:" 
 - [x] Debe en la tarcera linea de cada estrofa agregarse la frase que es el regalo de cada dia "[numeroCardinal] [regalo]" 
 - [x] Debe en la ultima linea de cada estrofa tener la frase del primer regalo "A partridge in a pear tree."
-- [ ] Debe la primera estrofa tener tres lineas de la canción con saltos de linea 
+- [x] Debe la primera estrofa tener tres lineas de la canción con saltos de linea 
