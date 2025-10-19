@@ -3,15 +3,20 @@ namespace Logica
 {
     public class CancionDeNavidad
     {
-        public List<string> ObtenerCancion()
+ 
+        public List<List<string>> ObtenerCancion()
         {
-           List<string> cancion = new List<string>();
+           List<List<string>> estrofas = new List<List<string>>();
            for(int i = 0; i <12; i++)
            {
-                cancion.Add(i.ToString());
+                List<string> estrofa = new List<string>();
+
+                estrofa.Add("");
+
+                estrofas.Add(estrofa);
            }
 
-           return cancion;
+           return estrofas;
         }
     }
 }
