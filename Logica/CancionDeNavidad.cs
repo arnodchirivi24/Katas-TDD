@@ -3,7 +3,7 @@ namespace Logica
 {
     public class CancionDeNavidad
     {
-        public List<List<string>> ObtenerCancion()
+        public List<List<string>> ConstruirCancion()
         {
            List<List<string>> estrofas = new List<List<string>>();
 
@@ -37,7 +37,7 @@ namespace Logica
 
         public string ObtenerCancionCompleta()
         {
-            var resultadoListadoEstrofas = ObtenerCancion();
+            var resultadoListadoEstrofas = ConstruirCancion();
             var estrofasComoTexto = new List<string>();
 
             foreach (List<string> estrofa in resultadoListadoEstrofas)
