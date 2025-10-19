@@ -27,5 +27,19 @@ namespace Katas.CancionDeNavidadTest
 
             resultado[indiceEstrofa][indicePrimeraLinea].Should().Be(textoEsperado);
         }
+
+        [Theory]
+        [InlineData(0, 1)]
+        [InlineData(4, 1)]
+        [InlineData(9, 1)]
+        public void Debe_ObtenerCancion_RetornarEnLaSegundaLineaDeCadaEstrofa_My_true_love_sent_to_me(int indiceEstrofa, int indiceLinea)
+        {
+            var cancion = new CancionDeNavidad();
+            var segundaLineaEsperada = "My true love sent to me:";
+
+            var resultado = cancion.ObtenerCancion();
+
+            resultado[indiceEstrofa][indiceLinea].Should().Be(segundaLineaEsperada);
+        }
     }
 }
