@@ -3,9 +3,9 @@ namespace Logica
 {
     public class CancionDeNavidad
     {
-        private readonly string _primeraLinea = "On the [x] day of Christmas";
-        private readonly string _segundaLinea = "My true love sent to me:";
-        private static readonly string[] _diasOrdinales = new string[]
+        private const string PimeraLinea = "On the [x] day of Christmas";
+        private const string SegundaLinea = "My true love sent to me:";
+        private static readonly string[] DiasOrdinales = new string[]
         {
                 "first",
                 "second",
@@ -31,16 +31,16 @@ namespace Logica
                 estrofas.Add(CrearEstrofa(i));
            }
 
-            return estrofas;
+           return estrofas;
         }
 
         private List<string> CrearEstrofa(int indiceEstrofa)
         {
             List<string> estrofa = new List<string>();
 
-            string primeraLinea = _primeraLinea.Replace("[x]", _diasOrdinales[indiceEstrofa]);
+            string primeraLinea = PimeraLinea.Replace("[x]", DiasOrdinales[indiceEstrofa]);
             estrofa.Add(primeraLinea);
-            estrofa.Add(_segundaLinea);
+            estrofa.Add(SegundaLinea);
 
             return estrofa;
         }
