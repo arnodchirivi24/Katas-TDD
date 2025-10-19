@@ -5,7 +5,13 @@ namespace Logica
     {
         public List<string> ObtenerCancion()
         {
-            throw new NotImplementedException();
+           List<string> cancion = new List<string>();
+           for(int i = 0; i <12; i++)
+           {
+                cancion.Add(i.ToString());
+           }
+
+           return cancion;
         }
     }
 }
