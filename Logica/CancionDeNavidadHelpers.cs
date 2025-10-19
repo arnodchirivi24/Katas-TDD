@@ -13,7 +13,7 @@
                 "fifth",
                 "sixth",
                 "seventh",
-                "eighth",
+                "eight",
                 "ninth",
                 "tenth",
                 "eleventh",

@@ -13,7 +13,7 @@ namespace Logica
            }
 
            return estrofas;
-        }
+        }          
 
         private List<string> CrearEstrofa(int indiceEstrofa)
         {
@@ -33,6 +33,20 @@ namespace Logica
         {
             estrofa.Add(CancionDeNavidadHelpers.PimeraLinea.Replace("[x]", CancionDeNavidadHelpers.DiasOrdinales[indiceEstrofa]));
             estrofa.Add(CancionDeNavidadHelpers.SegundaLinea);
+        }
+
+        public string ObtenerCancionCompleta()
+        {
+            var resultadoListadoEstrofas = ObtenerCancion();
+            var estrofasComoTexto = new List<string>();
+
+            foreach (List<string> estrofa in resultadoListadoEstrofas)
+            {
+                string estrofaUnida = string.Join("\n", estrofa);
+                estrofasComoTexto.Add(estrofaUnida);
+            }
+
+            return string.Join("\n\n", estrofasComoTexto);
         }
     }
 }
