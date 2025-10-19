@@ -1,6 +1,6 @@
-- [X] Debe la canción tener doce estrofas
-- [X] Debe en la primera linea de cada estrofa tener la frase "On the [x] day of Christmas" en donde [x] sea el numero ordinal de cada dia
-- [ ] Debe en la segunda linea de cada estrofa tener la frase "My true love sent to me:" 
+- [x] Debe la canción tener doce estrofas
+- [x] Debe en la primera linea de cada estrofa tener la frase "On the [x] day of Christmas" en donde [x] sea el numero ordinal de cada dia
+- [x] Debe en la segunda linea de cada estrofa tener la frase "My true love sent to me:" 
 - [ ] Debe en la tarcera linea de cada estrofa agregarse la frase que es el regalo de cada dia "[numeroCardinal] [regalo]" 
 - [ ] Debe en la ultima linea de cada estrofa tener la frase del primer regalo "A partridge in a pear tree."
 - [ ] Debe la primera estrofa tener tres lineas de la canción 

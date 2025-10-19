@@ -4,6 +4,7 @@ namespace Logica
     public class CancionDeNavidad
     {
         private readonly string _primeraLinea = "On the [x] day of Christmas";
+        private readonly string _segundaLinea = "My true love sent to me:";
         private static readonly string[] _diasOrdinales = new string[]
         {
                 "first",
@@ -39,6 +40,7 @@ namespace Logica
 
             string primeraLinea = _primeraLinea.Replace("[x]", _diasOrdinales[indiceEstrofa]);
             estrofa.Add(primeraLinea);
+            estrofa.Add(_segundaLinea);
 
             return estrofa;
         }
