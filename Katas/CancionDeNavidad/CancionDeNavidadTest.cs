@@ -43,11 +43,12 @@ namespace Katas.CancionDeNavidadTest
         }
 
 
-        // - [ ] Debe en la tarcera linea de cada estrofa agregarse la frase que es el regalo de cada dia "[diaCardinal] [regalo]" 
         [Theory]
         [InlineData(0, "A partridge in a pear tree.")]
         [InlineData(1, "Two turtle doves and")]
         [InlineData(2, "Three french hens")]
+        [InlineData(8, "Nine ladies dancing")]
+        [InlineData(11, "Twelve drummers drumming")]
         public void Debe_ObtenerCancion_RetornarEnLaTerceraLineaDeCadaEstrofaElRegaloDeCadaDiaConNumeroCardinal(int indiceEstrofa, string lineaEsperada)
         {
             var cancion = new CancionDeNavidad();

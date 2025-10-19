@@ -20,7 +20,23 @@ namespace Logica
                 "eleventh",
                 "twelfth"
         };
-   
+
+        private static readonly string[] Regalos = new string[]
+        {
+            "A partridge in a pear tree.",
+            "Two turtle doves and",
+            "Three french hens",
+            "Four calling birds",
+            "Five golden rings",
+            "Six geese a-laying",
+            "Seven swans a-swimming",
+            "Eight maids a-milking",
+            "Nine ladies dancing",
+            "Ten lords a-leaping",
+            "Eleven pipers piping",
+            "Twelve drummers drumming"
+        };
+
 
         public List<List<string>> ObtenerCancion()
         {
@@ -41,6 +57,11 @@ namespace Logica
             string primeraLinea = PimeraLinea.Replace("[x]", DiasOrdinales[indiceEstrofa]);
             estrofa.Add(primeraLinea);
             estrofa.Add(SegundaLinea);
+
+            for(int j= indiceEstrofa; j >=0; j--)
+            {
+                estrofa.Add(Regalos[j]);
+            }
 
             return estrofa;
         }
