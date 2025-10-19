@@ -3,7 +3,23 @@ namespace Logica
 {
     public class CancionDeNavidad
     {
- 
+        private readonly string _primeraLinea = "On the [x] day of Christmas";
+        private readonly string[] _diasOrdinales = new string[]
+        {
+                "first",
+                "second",
+                "third",
+                "fourth",
+                "fifth",
+                "sixth",
+                "seventh",
+                "eighth",
+                "ninth",
+                "tenth",
+                "eleventh",
+                "twelfth"
+        };
+
         public List<List<string>> ObtenerCancion()
         {
            List<List<string>> estrofas = new List<List<string>>();
@@ -11,7 +27,8 @@ namespace Logica
            {
                 List<string> estrofa = new List<string>();
 
-                estrofa.Add("");
+                string primeraLinea = _primeraLinea.Replace("[x]", _diasOrdinales[i]);
+                estrofa.Add(primeraLinea);
 
                 estrofas.Add(estrofa);
            }

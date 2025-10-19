@@ -14,8 +14,6 @@ namespace Katas.CancionDeNavidadTest
             resultado.Count().Should().Be(12);
         }
 
-        //- [ ] Debe en la primera linea de cada estrofa tener la frase "On the [x] day of Christmas" en donde[x] sea el numero ordinal de cada dia
-
         [Theory]
         [InlineData(0, "On the first day of Christmas")]
         [InlineData(5, "On the sixth day of Christmas")]
