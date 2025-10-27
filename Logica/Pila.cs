@@ -33,9 +33,9 @@ namespace Logica
             return elemento;
         }
 
-        public object ObtenerCantidad()
+        public int ObtenerCantidad()
         {
-            throw new NotImplementedException();
+            return _contador + 1;
         }
     }
 }
