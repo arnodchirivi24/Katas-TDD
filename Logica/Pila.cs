@@ -1,7 +1,4 @@
-﻿
-using System.Xml.Linq;
-
-namespace Logica
+﻿namespace Logica
 {
     public class Pila<T>
     {
@@ -19,6 +16,8 @@ namespace Logica
 
         public void AgregarElemento(T elemento)
         {
+            if (ObtenerCantidadDeElementosIngresadosPila() == Tamanio) throw new PilaLlenaException();
+
             _contador++;
             _elementos[_contador] = elemento;
         }
@@ -40,5 +39,11 @@ namespace Logica
         {
             return _contador + 1;
         }
+    }
+
+    [Serializable]
+    public class PilaLlenaException: InvalidOperationException
+    {
+        public PilaLlenaException() : base("La operación no es válida porque la pila está llena") { }
     }
 }
