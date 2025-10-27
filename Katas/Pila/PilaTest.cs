@@ -109,5 +109,16 @@ namespace Katas.PilaTest
         }
 
 
+        [Fact]
+        public void Debe_EsVacio_RetornarFalseCuandoEsteVaciaLaPila()
+        {
+            var tamanioPila = 5;
+
+            //Act
+            var pila = new Pila<string>(tamanioPila);
+
+            //Assert
+            pila.EsVacio.Should().BeFalse();
+        }
     }
 }
