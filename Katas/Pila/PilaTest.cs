@@ -59,5 +59,27 @@ namespace Katas.PilaTest
             resultado.Should().Be("Naranja");
         }
 
+
+        [Fact]
+        public void Debe_ElMetodoEliminarUltimoElemento_QuitarElElementoEnLaParteSuperiorDeLaPilaYDevolverlo()
+        {
+            //Arrange       
+            var tamanioPila = 5;
+
+            //Act
+            var pila = new Pila<string>(tamanioPila);
+            pila.AgregarElemento("Manzana");
+            pila.AgregarElemento("Naranja");
+            pila.AgregarElemento("Piña");
+
+
+            //Assert
+            var resultado = pila.EliminarUltimoElemento();
+            var valorIndice = pila.ObtenerElemento();
+
+            resultado.Should().Be("Piña");
+            valorIndice.Should().Be("Naranja");
+        }
+
     }
 }

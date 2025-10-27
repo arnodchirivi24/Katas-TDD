@@ -24,5 +24,10 @@ namespace Logica
         {
             return _elementos[_contador];
         }
+
+        public object EliminarUltimoElemento()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
