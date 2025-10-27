@@ -36,7 +36,7 @@ namespace Logica
             return elemento;
         }
 
-        public int ObtenerCantidad()
+        public int ObtenerCantidadDeElementosIngresadosPila()
         {
             return _contador + 1;
         }

@@ -82,7 +82,7 @@ namespace Katas.PilaTest
         }
 
         [Fact]
-        public void Debe_ElMetodoObtenerCantidadRetornarseElTamanioDeLaPila()
+        public void Debe_ElMetodoObtenerCantidadDeElementosIngresadosPilaDevolverLaCantidadDeElementosIngresadosALaPila()
         {
             //Arrange       
 
@@ -91,7 +91,7 @@ namespace Katas.PilaTest
             _pila.AgregarElemento("Naranja");
 
             //Assert
-            _pila.ObtenerCantidad().Should().Be(2);
+            _pila.ObtenerCantidadDeElementosIngresadosPila().Should().Be(2);
         }
 
         [Fact]
