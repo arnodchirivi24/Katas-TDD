@@ -27,7 +27,10 @@ namespace Logica
 
         public object EliminarUltimoElemento()
         {
-            throw new NotImplementedException();
+            var elemento = ObtenerElemento();
+            _elementos[_contador] = default(T)!;
+            _contador--;
+            return elemento;
         }
     }
 }
