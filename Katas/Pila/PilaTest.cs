@@ -36,7 +36,6 @@ namespace Katas.PilaTest
         public void Debe_ElMetodoObtenerElemento_DevolverElUltimoElementoAgregadoALaPila()
         {
             //Arrange
-            var tamanioPila = 5;
             //Act
             _pila.AgregarElemento("Manzana");
             _pila.AgregarElemento("Naranja");
@@ -114,6 +113,15 @@ namespace Katas.PilaTest
 
             //Assert
             _pila.EsVacio.Should().BeFalse();
+        }
+
+        //ebe validarse cuando hay desbordamiento cuando se introducen demasiados los elementos de la pila
+        [Fact]
+        public void Debe_DevolverUnaExcepcion_CuandoSeEnviaUnTamanioNegativo()
+        {
+            Action pila = () => new Pila<string>(-10);
+
+            pila.Should().Throw<ArgumentException>().WithParameterName("tamanioPila");
         }
     }
 }
