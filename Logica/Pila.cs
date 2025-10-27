@@ -24,6 +24,7 @@
 
         public T ObtenerElemento()
         {
+            if (EsVacio) throw new PilaVaciaException();
             return _elementos[_contador];
         }
 

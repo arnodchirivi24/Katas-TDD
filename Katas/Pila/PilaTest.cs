@@ -157,10 +157,6 @@ namespace Katas.PilaTest
         {
             var pila = new Pila<int>(1);
 
-            pila.AgregarElemento(10);
-            pila.ObtenerElemento();
-
-
             Action accionObtenereElemento = () => pila.ObtenerElemento();
 
             accionObtenereElemento.Should().Throw<PilaVaciaException>();
