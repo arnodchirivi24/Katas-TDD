@@ -7,6 +7,14 @@ namespace Katas.PilaTest
     public class PilaTest
     {
 
+        private readonly int _tamanioPila = 5;
+        private readonly Pila<string> _pila;
+
+        public PilaTest()
+        {
+            _pila = new Pila<string>(_tamanioPila);
+        }
+
         [Theory]
         [InlineData(5)]
         [InlineData(10)]
@@ -30,14 +38,13 @@ namespace Katas.PilaTest
             //Arrange
             var tamanioPila = 5;
             //Act
-            var pila = new Pila<string>(tamanioPila);
-            pila.AgregarElemento("Manzana");
-            pila.AgregarElemento("Naranja");
-            pila.AgregarElemento("Piña");
+            _pila.AgregarElemento("Manzana");
+            _pila.AgregarElemento("Naranja");
+            _pila.AgregarElemento("Piña");
 
 
             //Assert
-            var resultado = pila.ObtenerElemento();
+            var resultado = _pila.ObtenerElemento();
             resultado.Should().Be("Piña");
         }
 
@@ -45,17 +52,13 @@ namespace Katas.PilaTest
         public void Debe_ElMetodoAgregarElemento_AñadirUnElementoEnLaParteSuperiorDeLaPila()
         {
             //Arrange
-            //Arrange
-            var tamanioPila = 5;
-
 
             //Act
-            var pila = new Pila<string>(tamanioPila);
-            pila.AgregarElemento("Manzana");
-            pila.AgregarElemento("Naranja");
+            _pila.AgregarElemento("Manzana");
+            _pila.AgregarElemento("Naranja");
 
             //Assert
-            var resultado = pila.ObtenerElemento();
+            var resultado = _pila.ObtenerElemento();
             resultado.Should().Be("Naranja");
         }
 
@@ -64,18 +67,16 @@ namespace Katas.PilaTest
         public void Debe_ElMetodoEliminarUltimoElemento_QuitarElElementoEnLaParteSuperiorDeLaPilaYDevolverlo()
         {
             //Arrange       
-            var tamanioPila = 5;
 
             //Act
-            var pila = new Pila<string>(tamanioPila);
-            pila.AgregarElemento("Manzana");
-            pila.AgregarElemento("Naranja");
-            pila.AgregarElemento("Piña");
+            _pila.AgregarElemento("Manzana");
+            _pila.AgregarElemento("Naranja");
+            _pila.AgregarElemento("Piña");
 
 
             //Assert
-            var resultado = pila.EliminarUltimoElemento();
-            var valorIndice = pila.ObtenerElemento();
+            var resultado = _pila.EliminarUltimoElemento();
+            var valorIndice = _pila.ObtenerElemento();
 
             resultado.Should().Be("Piña");
             valorIndice.Should().Be("Naranja");
@@ -85,41 +86,34 @@ namespace Katas.PilaTest
         public void Debe_ElMetodoObtenerCantidadRetornarseElTamanioDeLaPila()
         {
             //Arrange       
-            var tamanioPila = 5;
 
             //Act
-            var pila = new Pila<string>(tamanioPila);
-            pila.AgregarElemento("Manzana");
-            pila.AgregarElemento("Naranja");
+            _pila.AgregarElemento("Manzana");
+            _pila.AgregarElemento("Naranja");
 
             //Assert
-            pila.ObtenerCantidad().Should().Be(2);
+            _pila.ObtenerCantidad().Should().Be(2);
         }
 
         [Fact]
         public void Debe_EsVacio_RetornarTrueCuandoEsteVaciaLaPila()
         {
-            var tamanioPila = 5;
-
+            //Arrange  
             //Act
-            var pila = new Pila<string>(tamanioPila);
-
             //Assert
-            pila.EsVacio.Should().BeTrue();
+            _pila.EsVacio.Should().BeTrue();
         }
 
 
         [Fact]
         public void Debe_EsVacio_RetornarFalseCuandoEsteVaciaLaPila()
         {
-            var tamanioPila = 5;
-
+            //Arrange  
             //Act
-            var pila = new Pila<string>(tamanioPila);
-            pila.AgregarElemento("Manzana");
+            _pila.AgregarElemento("Manzana");
 
             //Assert
-            pila.EsVacio.Should().BeFalse();
+            _pila.EsVacio.Should().BeFalse();
         }
     }
 }
