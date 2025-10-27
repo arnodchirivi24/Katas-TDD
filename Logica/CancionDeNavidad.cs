@@ -4,15 +4,8 @@ namespace Logica
     public class CancionDeNavidad
     {
         public List<List<string>> ConstruirCancion()
-        {
-           List<List<string>> estrofas = new List<List<string>>();
-
-           for (int i = 0; i <12; i++)
-           {
-                estrofas.Add(CrearEstrofa(i));
-           }
-
-           return estrofas;
+        { 
+            return Enumerable.Range(0, 12).Select(e => (CrearEstrofa(e))).ToList();
         }          
 
         private List<string> CrearEstrofa(int indiceEstrofa)
@@ -21,10 +14,9 @@ namespace Logica
 
             CrearPrimeraYSegundaLineaEstrofa(indiceEstrofa, estrofa);
 
-            for (int j = indiceEstrofa; j >= 0; j--)
-            {
-                estrofa.Add(CancionDeNavidadHelpers.Regalos[j]);
-            }
+            List<string> estrofasConRegalos = CancionDeNavidadHelpers.Regalos.Take(indiceEstrofa +1).Reverse().ToList();
+
+            estrofa.AddRange(estrofasConRegalos);
 
             return estrofa;
         }
