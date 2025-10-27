@@ -1,9 +1,12 @@
 ﻿
+using System.Xml.Linq;
+
 namespace Logica
 {
     public class Pila<T>
     {
         private readonly T[] _elementos;
+        private int _contador = -1;
         public int Tamanio => _elementos.Length;
 
         public Pila(int tamanioPila)
@@ -11,14 +14,15 @@ namespace Logica
             _elementos = new T[tamanioPila];
         }
 
-        public void AgregarElemento(string v)
+        public void AgregarElemento(T elemento)
         {
-            throw new NotImplementedException();
+            _contador++;
+            _elementos[_contador] = elemento;
         }
 
         public object ObtenerElemento()
         {
-            throw new NotImplementedException();
+            return _elementos[_contador];
         }
     }
 }
