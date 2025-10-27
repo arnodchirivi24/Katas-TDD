@@ -29,6 +29,7 @@
 
         public T EliminarUltimoElemento()
         {
+            if(EsVacio) throw new PilaVaciaException();
             var elemento = ObtenerElemento();
             _elementos[_contador] = default(T)!;
             _contador--;
@@ -45,5 +46,12 @@
     public class PilaLlenaException: InvalidOperationException
     {
         public PilaLlenaException() : base("La operación no es válida porque la pila está llena") { }
+    }
+
+
+    [Serializable]
+    public class PilaVaciaException : InvalidOperationException
+    {
+        public PilaVaciaException() : base("La operación no es válida porque la pila está vacia y no puede extraer el elemento") { }
     }
 }
