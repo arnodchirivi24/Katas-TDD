@@ -7,11 +7,13 @@ namespace Katas.PilaTest
     public class PilaTest
     {
 
-        [Fact]
-        public void Debe_LaPropiedadTamanio_TenerLaCantidadDeEspacioesDeLaPilaAConstruir()
+        [Theory]
+        [InlineData(5)]
+        [InlineData(10)]
+        [InlineData(3)]
+        public void Debe_LaPropiedadTamanio_TenerLaCantidadDeEspacioesDeLaPilaAConstruir(int tamanioPila)
         {
             //Arrange
-            int tamanioPila = 5;
 
             //Act
             var pila = new Pila<string>(tamanioPila);
