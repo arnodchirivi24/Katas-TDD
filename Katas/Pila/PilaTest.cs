@@ -14,7 +14,7 @@ namespace Katas.PilaTest
             int tamanioPila = 5;
 
             //Act
-            var pila = new Pila<string>();
+            var pila = new Pila<string>(tamanioPila);
 
             //Assert
             int resultado = pila.Tamanio;
