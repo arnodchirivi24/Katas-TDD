@@ -136,5 +136,20 @@ namespace Katas.PilaTest
 
             accionDeApilar.Should().Throw<PilaLlenaException>();
         }
+
+
+        [Fact]
+        public void Debe_CuandoLaPilaEstaVacia_GenerarUnErrorDeTipoPilaVaciaException()
+        {
+            var pila = new Pila<int>(1);
+
+            pila.AgregarElemento(10);
+            pila.EliminarUltimoElemento();
+     
+
+            Action accionDeApilar = () => pila.EliminarUltimoElemento();
+
+            accionDeApilar.Should().Throw<PilaVaciaException>();
+        }
     }
 }
