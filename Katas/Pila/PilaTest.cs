@@ -81,5 +81,20 @@ namespace Katas.PilaTest
             valorIndice.Should().Be("Naranja");
         }
 
+        [Fact]
+        public void Debe_ElMetodoObtenerCantidadRetornarseElTamanioDeLaPila()
+        {
+            //Arrange       
+            var tamanioPila = 5;
+
+            //Act
+            var pila = new Pila<string>(tamanioPila);
+            pila.AgregarElemento("Manzana");
+            pila.AgregarElemento("Naranja");
+
+            //Assert
+            pila.ObtenerCantidad().Should().Be(2);
+        }
+
     }
 }

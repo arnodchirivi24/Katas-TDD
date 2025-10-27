@@ -32,5 +32,10 @@ namespace Logica
             _contador--;
             return elemento;
         }
+
+        public object ObtenerCantidad()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
