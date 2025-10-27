@@ -22,5 +22,24 @@ namespace Katas.PilaTest
             int resultado = pila.Tamanio;
             resultado.Should().Be(tamanioPila);
         }
+
+
+        [Fact]
+        public void Debe_ElMetodoObtenerElemento_DevolverElUltimoElementoAgregadoALaPila()
+        {
+            //Arrange
+            var tamanioPila = 5;
+            //Act
+            var pila = new Pila<string>(tamanioPila);
+            pila.AgregarElemento("Manzana");
+            pila.AgregarElemento("Naranja");
+            pila.AgregarElemento("Piña");
+
+
+            //Assert
+            var resultado = pila.ObtenerElemento();
+            resultado.Should().Be("Piña");
+        }
+
     }
 }

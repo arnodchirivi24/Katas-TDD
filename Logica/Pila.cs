@@ -1,4 +1,5 @@
-﻿namespace Logica
+﻿
+namespace Logica
 {
     public class Pila<T>
     {
@@ -8,6 +9,16 @@
         public Pila(int tamanioPila)
         {
             _elementos = new T[tamanioPila];
+        }
+
+        public void AgregarElemento(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ObtenerElemento()
+        {
+            throw new NotImplementedException();
         }
     }
 }
