@@ -116,6 +116,7 @@ namespace Katas.PilaTest
 
             //Act
             var pila = new Pila<string>(tamanioPila);
+            pila.AgregarElemento("Manzana");
 
             //Assert
             pila.EsVacio.Should().BeFalse();
