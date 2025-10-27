@@ -41,5 +41,23 @@ namespace Katas.PilaTest
             resultado.Should().Be("Piña");
         }
 
+        [Fact]
+        public void Debe_ElMetodoAgregarElemento_AñadirUnElementoEnLaParteSuperiorDeLaPila()
+        {
+            //Arrange
+            //Arrange
+            var tamanioPila = 5;
+
+
+            //Act
+            var pila = new Pila<string>(tamanioPila);
+            pila.AgregarElemento("Manzana");
+            pila.AgregarElemento("Naranja");
+
+            //Assert
+            var resultado = pila.ObtenerElemento();
+            resultado.Should().Be("Naranja");
+        }
+
     }
 }
