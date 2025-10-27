@@ -123,5 +123,18 @@ namespace Katas.PilaTest
 
             pila.Should().Throw<ArgumentException>().WithParameterName("tamanioPila");
         }
+
+        [Fact]
+        public void Debe_CuandoLaPilaEstaLlena_GenerarUnErrorDeTipoPilaLlenaExcpetion()
+        {
+            var pila = new Pila<int>(2);
+
+            pila.AgregarElemento(10);
+            pila.AgregarElemento(20);
+
+            Action accionDeApilar = () => pila.AgregarElemento(30);
+
+            accionDeApilar.Should().Throw<PilaLlenaException>();
+        }
     }
 }
