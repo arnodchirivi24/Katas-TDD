@@ -16,6 +16,6 @@ Este proyecto no busca crear una aplicación funcional, sino enfocarse en el *pr
 ## 🚀 Stack Tecnológico
 
 * **Lenguaje:** C#
-* **Framework:** .NET 9 (o la versión que estés usando)
+* **Framework:** .NET 9
 * **Framework de Pruebas:** xUnit
 
