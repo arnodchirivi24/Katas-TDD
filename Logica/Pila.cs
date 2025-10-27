@@ -13,6 +13,7 @@ namespace Logica
 
         public Pila(int tamanioPila)
         {
+            if (tamanioPila < 1) throw new ArgumentException("El tamaño de la pila no puede ser 0 o negativo ", nameof(tamanioPila));
             _elementos = new T[tamanioPila];
         }
 
