@@ -132,9 +132,9 @@ namespace Katas.PilaTest
             pila.AgregarElemento(10);
             pila.AgregarElemento(20);
 
-            Action accionDeApilar = () => pila.AgregarElemento(30);
+            Action accionAgregarElemento = () => pila.AgregarElemento(30);
 
-            accionDeApilar.Should().Throw<PilaLlenaException>();
+            accionAgregarElemento.Should().Throw<PilaLlenaException>();
         }
 
 
@@ -147,9 +147,23 @@ namespace Katas.PilaTest
             pila.EliminarUltimoElemento();
      
 
-            Action accionDeApilar = () => pila.EliminarUltimoElemento();
+            Action accionEliminarElemento = () => pila.EliminarUltimoElemento();
 
-            accionDeApilar.Should().Throw<PilaVaciaException>();
+            accionEliminarElemento.Should().Throw<PilaVaciaException>();
+        }
+
+        [Fact]
+        public void Debe_ElMetodoObtenerElemento_GenerarUnErrorDeTipoPilaVaciaExceptionCuandoLaPilaEsteVacia()
+        {
+            var pila = new Pila<int>(1);
+
+            pila.AgregarElemento(10);
+            pila.ObtenerElemento();
+
+
+            Action accionObtenereElemento = () => pila.ObtenerElemento();
+
+            accionObtenereElemento.Should().Throw<PilaVaciaException>();
         }
     }
 }
