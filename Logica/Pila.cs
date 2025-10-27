@@ -9,6 +9,8 @@ namespace Logica
         private int _contador = -1;
         public int Tamanio => _elementos.Length;
 
+        public bool EsVacio { get; }
+
         public Pila(int tamanioPila)
         {
             _elementos = new T[tamanioPila];

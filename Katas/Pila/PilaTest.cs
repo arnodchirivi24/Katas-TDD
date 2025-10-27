@@ -96,5 +96,18 @@ namespace Katas.PilaTest
             pila.ObtenerCantidad().Should().Be(2);
         }
 
+        [Fact]
+        public void Debe_EsVacio_RetornarTrueCuandoEsteVaciaLaPila()
+        {
+            var tamanioPila = 5;
+
+            //Act
+            var pila = new Pila<string>(tamanioPila);
+
+            //Assert
+            pila.EsVacio.Should().BeTrue();
+        }
+
+
     }
 }
