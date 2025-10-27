@@ -20,12 +20,12 @@ namespace Logica
             _elementos[_contador] = elemento;
         }
 
-        public object ObtenerElemento()
+        public T ObtenerElemento()
         {
             return _elementos[_contador];
         }
 
-        public object EliminarUltimoElemento()
+        public T EliminarUltimoElemento()
         {
             var elemento = ObtenerElemento();
             _elementos[_contador] = default(T)!;
