@@ -24,13 +24,13 @@
 
         public T ObtenerElemento()
         {
-            if (EsVacio) throw new PilaVaciaException();
+            LanzarErrorSiPilaEstaVacia();
             return _elementos[_contador];
         }
 
         public T EliminarUltimoElemento()
         {
-            if(EsVacio) throw new PilaVaciaException();
+            LanzarErrorSiPilaEstaVacia();
             var elemento = ObtenerElemento();
             _elementos[_contador] = default(T)!;
             _contador--;
@@ -40,6 +40,11 @@
         public int ObtenerCantidadDeElementosIngresadosPila()
         {
             return _contador + 1;
+        }
+
+        private void LanzarErrorSiPilaEstaVacia()
+        {
+            if (EsVacio) throw new PilaVaciaException();
         }
     }
 
