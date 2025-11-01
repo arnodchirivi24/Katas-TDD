@@ -7,6 +7,11 @@ namespace Logica
         {
         }
 
+        public void AgregarTarea(DateTime inicio, DateTime fin, string tarea)
+        {
+        
+        }
+
         public string QueDeboHacerAhora(DateTime horaActual)
         {
             return "Tiempo libre";
