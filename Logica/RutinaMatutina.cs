@@ -11,9 +11,9 @@ namespace Logica
              _tareas.Add(nuevaTarea);
         }
 
-        public string QueDeboHacerAhora(DateTime fechaYHoraActual)
+        public string QueDeboHacerAhora()
         {
-
+            DateTime fechaYHoraActual = DateTime.Now;
             var tareaActual = _tareas.SingleOrDefault(tarea => fechaYHoraActual >= tarea.Inicio && fechaYHoraActual < tarea.Fin);
             
             if (tareaActual != null)
