@@ -9,7 +9,7 @@ namespace Logica
 
         public string QueDeboHacerAhora(DateTime horaActual)
         {
-            throw new NotImplementedException();
+            return "Hacer ejercicio";
         }
     }
 }
