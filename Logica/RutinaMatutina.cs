@@ -9,7 +9,7 @@ namespace Logica
 
         public string QueDeboHacerAhora(DateTime horaActual)
         {
-            return "Hacer ejercicio";
+            return "Tiempo libre";
         }
     }
 }
