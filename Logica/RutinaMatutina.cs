@@ -1,13 +1,13 @@
 ﻿
 namespace Logica
 {
-    public class RutinaMatutina
+    public class RutinaMatutina: IRutinaMatutina
     {
         public RutinaMatutina()
         {
         }
 
-        public object ObtenerTareaActual()
+        public string QueDeboHacerAhora(DateTime horaActual)
         {
             throw new NotImplementedException();
         }
