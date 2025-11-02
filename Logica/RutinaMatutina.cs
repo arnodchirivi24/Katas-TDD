@@ -19,7 +19,7 @@ namespace Logica
 
         public string QueDeboHacerAhora()
         {
-            DateTime fechaYHoraActual = _reloj.Ahora();
+            DateTime fechaYHoraActual = _reloj.Ahora().ToUniversalTime();
             var tareaActual = _tareas.SingleOrDefault(tarea => fechaYHoraActual >= tarea.Inicio && fechaYHoraActual <= tarea.Fin);
             
             if (tareaActual != null)
@@ -38,8 +38,8 @@ namespace Logica
         public string Descripcion { get; }
         public Tarea(DateTime inicio, DateTime fin, string descripcion)
         {
-            Inicio = inicio;
-            Fin= fin;
+            Inicio = inicio.ToUniversalTime();
+            Fin= fin.ToUniversalTime();
             Descripcion = descripcion;
         }
     }
