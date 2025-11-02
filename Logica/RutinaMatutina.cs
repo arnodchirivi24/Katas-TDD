@@ -4,6 +4,12 @@ namespace Logica
     public class RutinaMatutina: IRutinaMatutina
     {
         private List<Tarea> _tareas = new List<Tarea>();
+        private IReloj _reloj;
+
+        public RutinaMatutina(IReloj reloj)
+        {
+            _reloj = reloj;
+        }
 
         public void AgregarTarea(DateTime inicio, DateTime fin, string tarea)
         {
@@ -13,8 +19,8 @@ namespace Logica
 
         public string QueDeboHacerAhora()
         {
-            DateTime fechaYHoraActual = DateTime.Now;
-            var tareaActual = _tareas.SingleOrDefault(tarea => fechaYHoraActual >= tarea.Inicio && fechaYHoraActual < tarea.Fin);
+            DateTime fechaYHoraActual = _reloj.Ahora();
+            var tareaActual = _tareas.SingleOrDefault(tarea => fechaYHoraActual >= tarea.Inicio && fechaYHoraActual <= tarea.Fin);
             
             if (tareaActual != null)
             {
