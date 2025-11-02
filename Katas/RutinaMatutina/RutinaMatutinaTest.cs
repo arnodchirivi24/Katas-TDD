@@ -78,6 +78,28 @@ namespace Katas.RutinaMatutinaTest
 
         }
 
+        [Fact]
+        public void Debe_ElMetodoAgregarTarea_GenerarExcepcionCuandoSeIntenteIngresarUnaTareaEnUnHoraQueYaEsteOcupada()
+        {
+            //Arrange
+            //InvalidOperationException
+            DateTime fechaYHoraUTC = new DateTime(2025, 11, 1, 16, 0, 0, DateTimeKind.Utc);
+            Mock<IReloj> relojMockUTC = MockHoraActual(fechaYHoraUTC);
+            var rutinaMatutina = new RutinaMatutina(relojMockUTC.Object);
+
+            DateTime inicio = new DateTime(2025, 11, 1, 11, 0, 0, DateTimeKind.Local);
+            DateTime fin = new DateTime(2025, 11, 1, 11, 59, 59, DateTimeKind.Local);
+            string tarea = "Hacer mercado";
+
+            //Act
+            rutinaMatutina.AgregarTarea(inicio, fin, tarea);
+
+            Action guardarTareaEnHoraNoPermita = () => rutinaMatutina.AgregarTarea(inicio, fin, tarea);
+
+            guardarTareaEnHoraNoPermita.Should().Throw<InvalidOperationException>();
+
+        }
+
         private static Mock<IReloj> MockHoraActual(DateTime hora)
         {
             var relojMock = new Mock<IReloj>();
