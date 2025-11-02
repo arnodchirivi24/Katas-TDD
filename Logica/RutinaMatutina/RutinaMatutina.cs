@@ -13,6 +13,10 @@
         public void AgregarTarea(DateTime inicio, DateTime fin, string descripcionTarea)
         {
              Tarea nuevaTarea = new Tarea(inicio, fin, descripcionTarea);
+             var existeTareaEnRangoDeFechasYHora = _tareas.SingleOrDefault(t => t.Inicio >= nuevaTarea.Inicio && t.Fin <= nuevaTarea.Fin);
+             if (existeTareaEnRangoDeFechasYHora != null)
+                throw new InvalidOperationException();
+
              _tareas.Add(nuevaTarea);
         }
 

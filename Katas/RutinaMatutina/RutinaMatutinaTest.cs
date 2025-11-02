@@ -82,7 +82,6 @@ namespace Katas.RutinaMatutinaTest
         public void Debe_ElMetodoAgregarTarea_GenerarExcepcionCuandoSeIntenteIngresarUnaTareaEnUnHoraQueYaEsteOcupada()
         {
             //Arrange
-            //InvalidOperationException
             DateTime fechaYHoraUTC = new DateTime(2025, 11, 1, 16, 0, 0, DateTimeKind.Utc);
             Mock<IReloj> relojMockUTC = MockHoraActual(fechaYHoraUTC);
             var rutinaMatutina = new RutinaMatutina(relojMockUTC.Object);
