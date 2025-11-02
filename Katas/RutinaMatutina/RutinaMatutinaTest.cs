@@ -41,16 +41,14 @@ namespace Katas.RutinaMatutinaTest
         }
 
 
-        
-        [Fact]
-        public void Debe_ElMetodoQueDeboHacerAhora_Devolver_LaTarea_Leer_y_estudiar_CuandoLaHoraSeaEntreLas07_00A_07_59SinRecibirElParametroDeHoraActual()
+
+        [Theory]
+        [MemberData(nameof(CasosValidos))]
+        public void Debe_ElMetodoQueDeboHacerAhora_Devolver_LaTarea_Correspondiente_DeacuerdoALaHoraIngresadada(DateTime inicio,DateTime fin, DateTime fechaHoraSolicitud, string tarea )
         {
             //Arrange
-            Mock<IReloj> relojMock = MockHoraActual(new DateTime(2025, 11, 1, 7, 59, 59));
-            RutinaMatutina rutinaMatutina = new RutinaMatutina(relojMock.Object);
-            DateTime inicio = new DateTime(2025, 11, 1, 7, 0, 0);
-            DateTime fin = new DateTime(2025, 11, 1, 7, 59, 59);
-            string tarea = "Leer y estudiar";
+            Mock<IReloj> relojMock = MockHoraActual(fechaHoraSolicitud);
+            RutinaMatutina rutinaMatutina = new RutinaMatutina(relojMock.Object);        
 
             //Act
             rutinaMatutina.AgregarTarea(inicio, fin, tarea);
@@ -65,6 +63,25 @@ namespace Katas.RutinaMatutinaTest
             relojMock.Setup(reloj => reloj.Ahora()).Returns(hora);
             return relojMock;
         }
+
+        public static IEnumerable<object[]> CasosValidos =>
+        new List<object[]>
+        {
+            new object[]
+            {
+                new DateTime(2025, 11, 1, 7, 0, 0),
+                new DateTime(2025, 11, 1, 7, 59, 59),
+                new DateTime(2025, 11, 1, 7, 59, 59),
+                "Leer y estudiar"
+            },
+            new object[]
+            {
+                new DateTime(2025, 11, 1, 8, 0, 0),
+                new DateTime(2025, 11, 1, 8, 59, 59),
+                new DateTime(2025, 11, 1, 8, 15, 30),
+                "Desayunar"
+            }
+        };
 
     }
 }
