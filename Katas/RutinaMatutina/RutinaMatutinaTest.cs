@@ -61,7 +61,7 @@ namespace Katas.RutinaMatutinaTest
         public void Debe_ElMetodoQueDeboHacerAhora_DevolverLaTarea_Hacer_mercado_CuandoSeAgregaLaTareaConHoraLocal_11_00_YLaHoraUtcEs_04_00_DeLaTarde()
         {
             //Arrange
-            DateTime fechaYHoraUtc = new DateTime(2025, 11, 1, 4, 0, 0, DateTimeKind.Utc);
+            DateTime fechaYHoraUtc = new DateTime(2025, 11, 1, 16, 0, 0, DateTimeKind.Utc);
             Mock<IReloj> relojMockUTC = MockHoraActual(fechaYHoraUtc);
             var rutinaMatutina = new RutinaMatutina(relojMockUTC.Object);
 
