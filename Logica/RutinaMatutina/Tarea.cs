@@ -17,5 +17,10 @@
         {
             return fechaYHoraActualUTC >= this.Inicio && fechaYHoraActualUTC < this.Fin;
         }
+
+        public bool existeTareaEnFechaYHoraIngresada(Tarea nuevaTarea)
+        {
+            return this.Inicio >= nuevaTarea.Inicio && this.Fin <= nuevaTarea.Fin;
+        }
     }
 }
