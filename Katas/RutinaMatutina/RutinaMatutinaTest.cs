@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Logica;
+using Logica.RutinaMatutina;
 using Moq;
 
 namespace Katas.RutinaMatutinaTest
@@ -44,10 +44,10 @@ namespace Katas.RutinaMatutinaTest
 
         [Theory]
         [MemberData(nameof(CasosValidos))]
-        public void Debe_ElMetodoQueDeboHacerAhora_Devolver_LaTarea_Correspondiente_DeacuerdoALaHoraIngresadada(DateTime inicio,DateTime fin, DateTime fechaHoraSolicitud, string tarea )
+        public void Debe_ElMetodoQueDeboHacerAhora_Devolver_LaTarea_Correspondiente_DeacuerdoALaHoraIngresadada(DateTime inicio,DateTime fin, DateTime fechaHoraConsultada, string tarea)
         {
             //Arrange
-            Mock<IReloj> relojMock = MockHoraActual(fechaHoraSolicitud);
+            Mock<IReloj> relojMock = MockHoraActual(fechaHoraConsultada);
             RutinaMatutina rutinaMatutina = new RutinaMatutina(relojMock.Object);        
 
             //Act
@@ -92,14 +92,14 @@ namespace Katas.RutinaMatutinaTest
             {
                 new DateTime(2025, 11, 1, 7, 0, 0),
                 new DateTime(2025, 11, 1, 7, 59, 59),
-                new DateTime(2025, 11, 1, 7, 59, 59),
+                new DateTime(2025, 11, 1, 12, 30, 50,DateTimeKind.Utc),
                 "Leer y estudiar"
             },
             new object[]
             {
                 new DateTime(2025, 11, 1, 8, 0, 0),
                 new DateTime(2025, 11, 1, 8, 59, 59),
-                new DateTime(2025, 11, 1, 8, 15, 30),
+                new DateTime(2025, 11, 1, 13, 15, 30, DateTimeKind.Utc),
                 "Desayunar"
             }
         };

@@ -1,4 +1,4 @@
-﻿namespace Logica
+﻿namespace Logica.RutinaMatutina
 {
     public interface IRutinaMatutina
     {
