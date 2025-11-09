@@ -83,5 +83,18 @@ namespace Katas.ReciboSupermercadoTest
 
             reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(costoTotal);
         }
+
+        [Fact]
+        public void Debe_ProcesarCompra_ProcesarUnaListaVaiaDeProductosY_DevolverUnReciboVacio()
+        {
+            var reciboSuper = new ReciboSupermercado();
+            var listaDeCompraVacia = new List<ProductoComprado>();
+
+            Recibo reciboGenerado = reciboSuper.ProcesarCompra(listaDeCompraVacia);
+
+            reciboGenerado.Lineas.Should().BeEmpty();
+            reciboGenerado.TotalCompra.Should().Be(0m);
+        }
     }
+
 }

@@ -15,18 +15,18 @@ Dos cajas de tomates cherry por 0,99 €, precio normal 0,69 € por caja
 Estos son solo ejemplos: las ofertas especiales reales cambian cada semana.
 
 Comportamientos
-[ ] Comprar por unidad 2x1
-[ ] Comprar por kilos tiene un % de descuento
-[ ] Comprar por unidades de bolsas tiene un  % de descuento
-[ ] Comprar por unidades de un product puede tener un precio fijo ejemplo (Cinco tubos de pasta de dientes por 7,49 €, precio normal 1,79 €.)
-[ ] Comprar por cajas puede tener un precio fijo
+[x] Comprar por unidad 2x1
+[x] Comprar por kilos tiene un % de descuento
+[x] Comprar por unidades de bolsas tiene un  % de descuento
+[x] Comprar por unidades de un product puede tener un precio fijo ejemplo (Cinco tubos de pasta de dientes por 7,49 €, precio normal 1,79 €.)
+[x] Comprar por cajas puede tener un precio fijo
 [ ] Se pueden cambiar las ofertas cada SEMANA.
 
 Que debe devolver el recibo
-Descripcion
-Unidad de medida
-Cantidad
-Valor
+[ ]Descripcion
+[ ]Unidad de medida
+[ ]Cantidad
+[ ]Valor
 
 Pruebas
 [ ] Debe CalcularCostoTotal devolver el valor total de 2 unidades de cepillos por el precio de uno que son 0.99 euros

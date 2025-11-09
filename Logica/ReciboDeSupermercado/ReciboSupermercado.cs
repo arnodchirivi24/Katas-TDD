@@ -1,5 +1,25 @@
-﻿namespace Logica
+﻿
+namespace Logica
 {
+    public record ProductoComprado(
+        string Descripcion,
+        int Cantidad,
+        decimal ValorUnidad,
+        string UnidadDeMedida = "Unidad"
+    );
+
+    public record LineaDeRecibo(
+        string Descripcion,
+        string UnidadDeMedida,
+        int Cantidad,
+        decimal ValorTotal,
+        decimal ValorDescuento
+    );
+
+    public record Recibo(
+        List<LineaDeRecibo> Lineas,
+        decimal TotalCompra
+    );
     public class ReciboSupermercado
     {
         public decimal CalcularCostoTotal(int unidades, decimal valorUnidad, string descripcionProducto)
@@ -46,7 +66,7 @@
 
         private decimal CalcularCostoProductoConDescuento2x1(int unidades, decimal valorUnidad)
         {
-            var unidadesApagar = unidades - (unidades / 2);
+            var unidadesApagar = unidades - unidades / 2;
             var totalCostoConDescuento2X1 = unidadesApagar * valorUnidad;
             return totalCostoConDescuento2X1;
         }
@@ -56,6 +76,11 @@
             var totalSinDescuento = valorUnidad * unidades;
             var totalConDescuento = totalSinDescuento * (1 - porcentajeDescuento);
             return Math.Round(totalConDescuento, 2);
+        }
+
+        public Recibo ProcesarCompra(List<ProductoComprado> listaDeCompraVacia)
+        {
+            throw new NotImplementedException();
         }
     }
 }
