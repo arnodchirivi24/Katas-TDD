@@ -21,8 +21,8 @@
                     }
                 case "Tubo de pasta de dientes":
                     {   
-                        if(unidades == 5)
-                            return 7.49m;
+                        if(unidades % 5 ==0)
+                            return (unidades/5)* 7.49m;
                         return unidades * valorUnidad;
                     }
                 default:
