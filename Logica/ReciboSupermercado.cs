@@ -17,7 +17,9 @@
             }
             if( descripcionProducto == "Arroz")
             {
-                return 2.24m;
+                var valorNormal = unidades * valorUnidad;
+                var valorConDescuento10Porciento = valorNormal * (1 - 0.1m);
+                return Math.Round(valorConDescuento10Porciento, 2);
             }
             return 0;
         }
