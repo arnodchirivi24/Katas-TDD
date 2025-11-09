@@ -11,7 +11,10 @@
             }
             if(descripcionProducto == "Manzanas")
             {
-                return 1.59m;
+                var valorNormalManzanas = unidades * valorUnidad;
+                var valorConDescuento20Porciento = valorNormalManzanas * (1 - 0.2m);
+              
+                return Math.Round(valorConDescuento20Porciento, 2);
             }
             return 0;
         }
