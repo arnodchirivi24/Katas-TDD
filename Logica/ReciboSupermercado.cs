@@ -3,25 +3,39 @@
     public class ReciboSupermercado
     {
         public decimal CalcularCostoTotal(int unidades, decimal valorUnidad, string descripcionProducto)
-        {      
-            if (descripcionProducto == "Cepillo")
+        {
+            switch (descripcionProducto)
             {
-                var unidadesAPagar = unidades - (unidades / 2);
-                return unidadesAPagar * valorUnidad;
+                case "Cepillo":
+                    {
+                        return CalcularCostoProductoConDescuento2x1(unidades, valorUnidad);
+                    }
+                case "Manzanas":
+                    {
+                        return CalcularCostoProductoConPorcentajeDeDescuento(unidades, valorUnidad, 0.2m);
+                    }
+                case "Arroz":
+                    {
+                        
+                        return CalcularCostoProductoConPorcentajeDeDescuento(unidades, valorUnidad, 0.1m);
+                    }
+                default:
+                    return 0;
             }
-            if (descripcionProducto == "Manzanas")
-            {
-                var valorNormalManzanas = unidades * valorUnidad;
-                var valorConDescuento20Porciento = valorNormalManzanas * (1 - 0.2m);
-                return Math.Round(valorConDescuento20Porciento, 2);
-            }
-            if( descripcionProducto == "Arroz")
-            {
-                var valorNormal = unidades * valorUnidad;
-                var valorConDescuento10Porciento = valorNormal * (1 - 0.1m);
-                return Math.Round(valorConDescuento10Porciento, 2);
-            }
-            return 0;
+        }
+
+        private decimal CalcularCostoProductoConDescuento2x1(int unidades, decimal valorUnidad)
+        {
+            var unidadesApagar = unidades - (unidades / 2);
+            var totalCostoConDescuento2X1 = unidadesApagar * valorUnidad;
+            return totalCostoConDescuento2X1;
+        }
+
+        private decimal CalcularCostoProductoConPorcentajeDeDescuento(int unidades, decimal valorUnidad, decimal porcentajeDescuento)
+        {
+            var totalSinDescuento = valorUnidad * unidades;
+            var totalConDescuento = totalSinDescuento * (1 - porcentajeDescuento);
+            return Math.Round(totalConDescuento, 2);
         }
     }
 }
