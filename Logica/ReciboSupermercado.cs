@@ -27,6 +27,8 @@
                     }
                 case "Cajas de tomates":
                     {
+                        if (unidades % 2 == 0)
+                            return (unidades / 2) * 0.99m;
                         return 0.99m;
                     }
                 default:
