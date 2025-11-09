@@ -77,5 +77,18 @@ namespace Katas.ReciboSupermercadoTest
             reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(valorEsperadoTotal);
         }
 
+        [Fact]
+
+        public void Debe_CalcularCostoTotal_CuandoSeCompra_10_TubosDePastaDeDientes_DevolverElValorDe_14_98_Euros()
+        {
+            var unidades = 10;
+            var valorUnidad = 1.79m;
+            var valorEsperadoTotal = 14.98m;
+            var descripcionProducto = "Tubo de pasta de dientes";
+            var reciboSuper = new ReciboSupermercado();
+
+            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(valorEsperadoTotal);
+        }
+
     }
 }
