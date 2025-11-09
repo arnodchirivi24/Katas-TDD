@@ -19,6 +19,10 @@
                         
                         return CalcularCostoProductoConPorcentajeDeDescuento(unidades, valorUnidad, 0.1m);
                     }
+                case "Tubo de pasta de dientes":
+                    {                    
+                        return 7.49m;            
+                    }
                 default:
                     return 0;
             }
