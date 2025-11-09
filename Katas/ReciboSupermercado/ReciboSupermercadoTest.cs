@@ -51,5 +51,20 @@ namespace Katas.ReciboSupermercadoTest
 
             reciboSuper.CalcularCostoTotal(unidad, valorUnidad, descripcionProducto).Should().Be(costoTotal);
         }
+
+        [Fact]
+
+        public void Debe_CalcularCostoTotal_CuandoSeCompra2BolsasDeArrozConPrecioDe_2_49_AplicandoDescuentoel_10_Porciento_DevolverElValorDe_4_48_Euros()
+        {
+            var unidad = 2;
+            var valorUnidad = 2.49m;
+            var valorDescuento = 0.10m;
+            var valorSinDescuento = unidad * valorUnidad;
+            var costoTotal = Math.Round(valorSinDescuento * (1 - valorDescuento), 2);
+            var descripcionProducto = "Arroz";
+            var reciboSuper = new ReciboSupermercado();
+
+            reciboSuper.CalcularCostoTotal(unidad, valorUnidad, descripcionProducto).Should().Be(costoTotal);
+        }
     }
 }
