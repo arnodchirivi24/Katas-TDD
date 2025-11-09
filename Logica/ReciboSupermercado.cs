@@ -25,6 +25,10 @@
                             return (unidades/5)* 7.49m;
                         return unidades * valorUnidad;
                     }
+                case "Cajas de tomates":
+                    {
+                        return 0.99m;
+                    }
                 default:
                     return 0;
             }
