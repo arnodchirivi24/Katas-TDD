@@ -15,6 +15,10 @@
                 var valorConDescuento20Porciento = valorNormalManzanas * (1 - 0.2m);
                 return Math.Round(valorConDescuento20Porciento, 2);
             }
+            if( descripcionProducto == "Arroz")
+            {
+                return 2.24m;
+            }
             return 0;
         }
     }
