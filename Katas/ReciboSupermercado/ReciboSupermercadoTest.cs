@@ -4,22 +4,17 @@ namespace Katas.ReciboSupermercadoTest
 {
     public class ReciboSupermercadoTest
     {
-        [Fact]
-        public void Debe_CalcularCostoTotal_CuandoSeCompran2CepillosConPromocionDe2x1YPrecioDe0_99CadaUno_DevuelveTotalDe0_99()
-        {
-            var costoTotal = 0.99m;
-            var reciboSuper = new ReciboSupermercado();
 
-            reciboSuper.CalcularCostoTotal(2, 0.99m, "Cepillo").Should().Be(costoTotal);
-        }
-
-        [Fact]
-        public void Debe_CalcularCostoTotal_CuandoSeCompran2CepillosConPromocionDe2x1YPrecioDe0_99CadaUno_DevuelveTotalDe1_98_Euros()
+        [Theory]
+        [InlineData(7, 3.96)]
+        [InlineData(3, 1.98)]
+        [InlineData(2, 0.99)]
+        [InlineData(6, 2.97)]
+        public void Debe_CalcularCostoTotal_CuandoSeCompran_N_CepillosConPromocionDe2x1YPrecioDe0_99CadaUno_DevuelveTotalDeEurosCorrespondiente(int unidades, double valorEsperado)
         {
-            //Arrange
-            var unidades = 3;
+            //Arrange      
             var valorUnidad = 0.99m;
-            var costoTotal = 1.98m;
+            var costoTotal = (decimal)valorEsperado;
             var reciboSuper = new ReciboSupermercado();
             //Act
 
