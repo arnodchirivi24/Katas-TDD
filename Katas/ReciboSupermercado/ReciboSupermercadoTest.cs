@@ -21,5 +21,17 @@ namespace Katas.ReciboSupermercadoTest
             //Assert
             reciboSuper.CalcularCostoTotal(unidades, valorUnidad, "Cepillo").Should().Be(costoTotal);
         }
+
+
+        [Fact]
+        public void Debe_CalcularCostoTotal_CuandoSeCompraUnKiloDeManzanasConPrecioDe_1_99_AplicandoDescuentoDel20Porciento_Devolver_1_59()
+        {
+            var valorUnidadKilo = 1.99m;
+            var costoTotalEsperado = 1.59m;
+            var descripcionProducto = "Manzanas";
+            var reciboSuperMercado = new ReciboSupermercado();
+
+            reciboSuperMercado.CalcularCostoTotal(1, valorUnidadKilo, descripcionProducto).Should().Be(costoTotalEsperado);
+        }
     }
 }
