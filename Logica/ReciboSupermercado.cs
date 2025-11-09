@@ -2,9 +2,14 @@
 {
     public class ReciboSupermercado
     {
-        public decimal CalcularCostoTotal(int v1, decimal v2, string v3)
+        public decimal CalcularCostoTotal(int unidades, decimal valorUnidad, string descripcionProducto)
         {
-            return 0.99m;
+            if(descripcionProducto == "Cepillo")
+            {
+                var unidadesAPagar = unidades - (unidades / 2);
+                return unidadesAPagar * valorUnidad;
+            }
+            return 0;
         }
     }
 }
