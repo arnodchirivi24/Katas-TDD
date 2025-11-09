@@ -15,32 +15,33 @@
                         return CalcularCostoProductoConPorcentajeDeDescuento(unidades, valorUnidad, 0.2m);
                     }
                 case "Arroz":
-                    {
-                        
+                    {                        
                         return CalcularCostoProductoConPorcentajeDeDescuento(unidades, valorUnidad, 0.1m);
                     }
                 case "Tubo de pasta de dientes":
-                    {   
-                        if(unidades % 5 ==0)
-                            return (unidades/5)* 7.49m;
-                        return unidades * valorUnidad;
+                    {
+                        return CalcularCostoProductosEnPromocionPorCombos(unidades,5, 7.49m, 1.79m);
                     }
                 case "Cajas de tomates":
                     {
-                        if (unidades % 2 == 0)
-                        {
-                            return (unidades / 2) * 0.99m;
-                        }
-                        else
-                        {
-                            var valorTotalPorParesDeCajas = (unidades / 2) * 0.99m;
-                            var valorTotalRestante = 1 * 0.69m;
-                            return valorTotalPorParesDeCajas + valorTotalRestante;
-                        }
+                        return CalcularCostoProductosEnPromocionPorCombos(unidades, 2, 0.99m, 0.69m);
                     }
                 default:
-                    return 0;
+                    return unidades * valorUnidad;
             }
+        }
+
+        private decimal CalcularCostoProductosEnPromocionPorCombos(int unidadesCompradas, int unidadesDePromocion, decimal valorPromocion, decimal valorPrecioNormalPorUnidad)
+        {
+            var gruposDePromocion = unidadesCompradas / unidadesDePromocion;
+
+            var unidadesRestantes = unidadesCompradas % unidadesDePromocion;
+
+            var costoPorPromocion = gruposDePromocion * valorPromocion;
+
+            var costoPorUnidadesRestantes = unidadesRestantes * valorPrecioNormalPorUnidad;
+
+            return costoPorPromocion + costoPorUnidadesRestantes;
         }
 
         private decimal CalcularCostoProductoConDescuento2x1(int unidades, decimal valorUnidad)

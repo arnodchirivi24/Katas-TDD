@@ -38,13 +38,13 @@ namespace Katas.ReciboSupermercadoTest
 
 
         [Theory]
-        [InlineData(1,2.24)]
-        [InlineData(2,4.48)]
-        [InlineData(8,17.93)]
+        [InlineData(1, 2.24)]
+        [InlineData(2, 4.48)]
+        [InlineData(8, 17.93)]
 
         public void Debe_CalcularCostoTotal_CuandoSeCompra_N_BolsasDeArrozConPrecioDe_2_49_AplicandoDescuentoel_10_Porciento_DevuelveTotalDeEurosCorrespondiente(int unidad, double valorTotalEsperado)
         {
-            var valorUnidad = 2.49m; 
+            var valorUnidad = 2.49m;
             var costoTotal = (decimal)valorTotalEsperado;
             var descripcionProducto = "Arroz";
             var reciboSuper = new ReciboSupermercado();
@@ -52,91 +52,36 @@ namespace Katas.ReciboSupermercadoTest
             reciboSuper.CalcularCostoTotal(unidad, valorUnidad, descripcionProducto).Should().Be(costoTotal);
         }
 
-        [Fact]
-        public void Debe_CalcularCostoTotal_CuandoSeCompra_5_TubosDePastaDeDientes_DevolverElValorDe_7_49_Euros()
+
+        [Theory]
+        [InlineData(3, 5.37)]
+        [InlineData(5, 7.49)]
+        [InlineData(10, 14.98)]
+        [InlineData(7, 11.07)]
+        public void Debe_CalcularCostoTotal_CuandoSeCompra_N_TubosDePastaDeDientes_DevuelveTotalDeEurosCorrespondiente(int unidades, double valorTotalEsperado)
         {
-            var unidades = 5;
             var valorUnidad = 1.79m;
-            var valorEsperadoTotal = 7.49m;
+            var costoTotal = (decimal)valorTotalEsperado;
             var descripcionProducto = "Tubo de pasta de dientes";
             var reciboSuper = new ReciboSupermercado();
 
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(valorEsperadoTotal);
-        }
-
-        [Fact]
-                    
-        public void Debe_CalcularCostoTotal_CuandoSeCompra_3_TubosDePastaDeDientes_DevolverElValorDe_5_37_Euros()
-        {
-            var unidades = 3;
-            var valorUnidad = 1.79m;
-            var valorEsperadoTotal = 5.37m;
-            var descripcionProducto = "Tubo de pasta de dientes";
-            var reciboSuper = new ReciboSupermercado();
-
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(valorEsperadoTotal);
-        }
-
-        [Fact]
-
-        public void Debe_CalcularCostoTotal_CuandoSeCompra_10_TubosDePastaDeDientes_DevolverElValorDe_14_98_Euros()
-        {
-            var unidades = 10;
-            var valorUnidad = 1.79m;
-            var valorEsperadoTotal = 14.98m;
-            var descripcionProducto = "Tubo de pasta de dientes";
-            var reciboSuper = new ReciboSupermercado();
-
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(valorEsperadoTotal);
+            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(costoTotal);
         }
 
 
-        [Fact]
-        
-        public void Debe_CalcularCostoTotal_CuandoSeCompra_2_CajasDeTomates_DevolverElValorDe_0_99_Euros()
+        [Theory]
+        [InlineData(2, 0.99)]
+        [InlineData(6, 2.97)]
+        [InlineData(7, 3.66)]
+
+        public void Debe_CalcularCostoTotal_CuandoSeCompra_N_CajasDeTomates_DevuelveTotalDeEurosCorrespondiente(int unidades, double valorTotalEsperado)
         {
-            var unidades = 2;
             var valorUnidad = 0.69m;
-            var valorEsperadoPorDosCajas = 0.99m;
+            var costoTotal = (decimal)valorTotalEsperado;
             var descripcionProducto = "Cajas de tomates";
             var reciboSuper = new ReciboSupermercado();
 
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(valorEsperadoPorDosCajas);
+            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(costoTotal);
         }
-
-        [Fact]
-        public void Debe_CalcularCostoTotal_CuandoSeCompra_6_CajasDeTomates_DevolverElValorDe_2_97_Euros()
-        {
-            var unidades = 6;
-            var valorUnidad = 0.69m;
-            var valorEsperadoPorSeisCajas = 2.97m;
-            var descripcionProducto = "Cajas de tomates";
-            var reciboSuper = new ReciboSupermercado();
-
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(valorEsperadoPorSeisCajas);
-        }
-
-        [Fact]
-        public void Debe_CalcularCostoTotal_CuandoSeCompra_7_CajasDeTomates_DevolverElValorDe_3_66_Euros()
-        {
-            //Arrange
-            var unidadesAgregadasAlCarro = 7;
-            var cantidadDeParesDeCajas = (unidadesAgregadasAlCarro / 2) * 2;
-            var cantidadRestante = unidadesAgregadasAlCarro % 2;
-
-            var valorUnidad = 0.69m;
-            var valorPorDosCajasDescuento = 0.99m;
-
-            var valorEsperadoPorDosCajas = (cantidadDeParesDeCajas / 2) * valorPorDosCajasDescuento;
-            var valorEsperadoCajasRestante = valorUnidad * cantidadRestante;
-            var valorTotalEsperado = valorEsperadoPorDosCajas + valorEsperadoCajasRestante;
-            var descripcionProducto = "Cajas de tomates";
-            var reciboSuper = new ReciboSupermercado();
-
-            //Assert
-            reciboSuper.CalcularCostoTotal(unidadesAgregadasAlCarro, valorUnidad, descripcionProducto).Should().Be(valorTotalEsperado);
-        }
-
-
     }
 }
