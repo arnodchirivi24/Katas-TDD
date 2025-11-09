@@ -22,28 +22,18 @@ namespace Katas.ReciboSupermercadoTest
             reciboSuper.CalcularCostoTotal(unidades, valorUnidad, "Cepillo").Should().Be(costoTotal);
         }
 
-
-        [Fact]
-        public void Debe_CalcularCostoTotal_CuandoSeCompraUnKiloDeManzanasConPrecioDe_1_99_AplicandoDescuentoDel20Porciento_Devolver_1_59()
+        [Theory]
+        [InlineData(1, 1.59)]
+        [InlineData(2, 3.18)]
+        [InlineData(5, 7.96)]
+        public void Debe_CalcularCostoTotal_CuandoSeCompra_N_KiloDeManzanasConPrecioDe_1_99_AplicandoDescuentoDel20Porciento_DevuelveTotalDeEurosCorrespondiente(int cantidadKilosComprada, double valorTotalEsperado)
         {
             var valorUnidadKilo = 1.99m;
-            var costoTotalEsperado = 1.59m;
+            var costoTotalEsperado = (decimal)valorTotalEsperado;
             var descripcionProducto = "Manzanas";
             var reciboSuperMercado = new ReciboSupermercado();
 
-            reciboSuperMercado.CalcularCostoTotal(1, valorUnidadKilo, descripcionProducto).Should().Be(costoTotalEsperado);
-        }
-
-        [Fact]
-        public void Debe_CalcularCostoTotal_CuandoSeCompraDosKiloDeManzanasConPrecioDe_1_99_AplicandoDescuentoDel20Porciento_Devolver_3_18()
-        {
-            var cantidadDeKilosComprada = 2;
-            var valorUnidadKilo = 1.99m;
-            var costoTotalEsperado = 3.18m;
-            var descripcionProducto = "Manzanas";
-            var reciboSuperMercado = new ReciboSupermercado();
-
-            reciboSuperMercado.CalcularCostoTotal(cantidadDeKilosComprada, valorUnidadKilo, descripcionProducto).Should().Be(costoTotalEsperado);
+            reciboSuperMercado.CalcularCostoTotal(cantidadKilosComprada, valorUnidadKilo, descripcionProducto).Should().Be(costoTotalEsperado);
         }
     }
 }
