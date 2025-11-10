@@ -80,7 +80,7 @@ namespace Logica
 
         public Recibo ProcesarCompra(List<ProductoComprado> listaDeCompraVacia)
         {
-            throw new NotImplementedException();
+            return new Recibo(new List<LineaDeRecibo>(), 0);
         }
     }
 }
