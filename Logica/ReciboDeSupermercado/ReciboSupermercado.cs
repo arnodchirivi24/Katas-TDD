@@ -22,7 +22,8 @@ namespace Logica
     );
     public class ReciboSupermercado
     {
-        public decimal CalcularCostoTotal(int unidades, decimal valorUnidad, string descripcionProducto)
+        public record ResultadoCalculo(decimal ValorTotal, decimal ValorDescuento);
+        public ResultadoCalculo CalcularCostoTotal(int unidades, decimal valorUnidad, string descripcionProducto)
         {
             switch (descripcionProducto)
             {
@@ -47,40 +48,77 @@ namespace Logica
                         return CalcularCostoProductosEnPromocionPorCombos(unidades, 2, 0.99m, 0.69m);
                     }
                 default:
-                    return unidades * valorUnidad;
+                    var valorTotal = unidades * valorUnidad;
+                    return new ResultadoCalculo(valorTotal, 0m);
             }
         }
 
-        private decimal CalcularCostoProductosEnPromocionPorCombos(int unidadesCompradas, int unidadesDePromocion, decimal valorPromocion, decimal valorPrecioNormalPorUnidad)
+        private ResultadoCalculo CalcularCostoProductosEnPromocionPorCombos(int unidadesCompradas, int unidadesDePromocion, decimal valorPromocion, decimal valorPrecioNormalPorUnidad)
         {
             var gruposDePromocion = unidadesCompradas / unidadesDePromocion;
-
             var unidadesRestantes = unidadesCompradas % unidadesDePromocion;
 
             var costoPorPromocion = gruposDePromocion * valorPromocion;
-
             var costoPorUnidadesRestantes = unidadesRestantes * valorPrecioNormalPorUnidad;
 
-            return costoPorPromocion + costoPorUnidadesRestantes;
+            var valorTotal = costoPorPromocion + costoPorUnidadesRestantes;
+
+            var precioNormalTotal = unidadesCompradas * valorPrecioNormalPorUnidad;
+            var valorDescuento = precioNormalTotal - valorTotal;
+
+            return new ResultadoCalculo(valorTotal, valorDescuento);
         }
 
-        private decimal CalcularCostoProductoConDescuento2x1(int unidades, decimal valorUnidad)
+        private ResultadoCalculo CalcularCostoProductoConDescuento2x1(int unidades, decimal valorUnidad)
         {
-            var unidadesApagar = unidades - unidades / 2;
-            var totalCostoConDescuento2X1 = unidadesApagar * valorUnidad;
-            return totalCostoConDescuento2X1;
+            var unidadesAPagar = (unidades / 2) + (unidades % 2);
+            var unidadesGratis = unidades / 2;
+
+            var valorTotal = unidadesAPagar * valorUnidad;
+            var valorDescuento = unidadesGratis * valorUnidad;
+
+            return new ResultadoCalculo(valorTotal, valorDescuento);
         }
 
-        private decimal CalcularCostoProductoConPorcentajeDeDescuento(int unidades, decimal valorUnidad, decimal porcentajeDescuento)
+        private ResultadoCalculo CalcularCostoProductoConPorcentajeDeDescuento(int unidades, decimal valorUnidad, decimal porcentajeDescuento)
         {
             var totalSinDescuento = valorUnidad * unidades;
             var totalConDescuento = totalSinDescuento * (1 - porcentajeDescuento);
-            return Math.Round(totalConDescuento, 2);
+
+            var valorTotal = Math.Round(totalConDescuento, 2);
+
+            var valorDescuento = Math.Round(totalSinDescuento - valorTotal, 2);
+            
+            return new ResultadoCalculo(valorTotal, valorDescuento);
         }
 
-        public Recibo ProcesarCompra(List<ProductoComprado> listaDeCompraVacia)
+        public Recibo ProcesarCompra(List<ProductoComprado> productos)
         {
-            return new Recibo(new List<LineaDeRecibo>(), 0);
+            var lineasDelRecibo = new List<LineaDeRecibo>();
+
+            foreach(var producto in productos)
+            {
+                ResultadoCalculo resultado = CalcularCostoTotal(
+                    producto.Cantidad,
+                    producto.ValorUnidad,
+                    producto.Descripcion
+                );
+
+
+                var linea = new LineaDeRecibo(
+                    producto.Descripcion,
+                    producto.UnidadDeMedida,
+                    producto.Cantidad,
+                    resultado.ValorTotal,
+                    resultado.ValorDescuento
+                );
+
+                lineasDelRecibo.Add(linea);
+            }
+
+            decimal totalCompra = lineasDelRecibo.Sum(linea => linea.ValorTotal);
+
+            return new Recibo(lineasDelRecibo, totalCompra);
         }
     }
 }
