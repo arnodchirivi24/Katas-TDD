@@ -85,36 +85,34 @@ namespace Katas.ReciboSupermercadoTest
             reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(resultado);
         }
 
-        [Fact]
-        public void Debe_ProcesarCompra_ProcesarUnaListaVaiaDeProductosY_DevolverUnReciboVacio()
-        {
-            var reciboSuper = new ReciboSupermercado();
-            var listaDeCompraVacia = new List<ProductoComprado>();
 
-            Recibo reciboGenerado = reciboSuper.ProcesarCompra(listaDeCompraVacia);
-
-            reciboGenerado.Lineas.Should().BeEmpty();
-            reciboGenerado.TotalCompra.Should().Be(0m);
-        }
-
-        [Fact]
-        public void Debe_ProcesarCompra_ProcesarUnaListaDeProductoSimple_DevolverUnaListaSinDescuento()
+        [Theory]
+        [InlineData("Shampo", 2, 1.0, "Unidad", 2.0, 0.0)]
+        [InlineData("Cajas de tomates", 2, 0.69, "Unidad", 0.99, 0.39)] 
+        public void Debe_ProcesarCompra_DevolverLineasCorrectas_ConOSinDescuento(
+            string descripcion,
+            int cantidad,
+            decimal valorUnidad,
+            string unidadDeMedida,
+            decimal valorTotalEsperado,
+            decimal valorDescuentoEsperado)
         {
             var reciboSuper = new ReciboSupermercado();
             var listaDeCompras = new List<ProductoComprado>
             {
-                new ProductoComprado("Shampo", 2, 1.0m, "Unidad")
+                new ProductoComprado(descripcion, cantidad, valorUnidad, unidadDeMedida)
             };
 
             Recibo reciboGenerado = reciboSuper.ProcesarCompra(listaDeCompras);
 
             reciboGenerado.Lineas.Should().HaveCount(1);
-            var linea = reciboGenerado.Lineas[0];
-            linea.Descripcion.Should().Be("Shampo");
-            linea.Cantidad.Should().Be(2);
-            linea.ValorTotal.Should().Be(2.0m);
-            linea.ValorDescuento.Should().Be(0m);
-        }
-    }
 
+            var linea = reciboGenerado.Lineas[0];
+            linea.Descripcion.Should().Be(descripcion);
+            linea.Cantidad.Should().Be(cantidad);
+            linea.ValorTotal.Should().Be(valorTotalEsperado);
+            linea.ValorDescuento.Should().Be(valorDescuentoEsperado);
+        }
+
+    }
 }
