@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 using Logica;
-using static Logica.ReciboSupermercado;
+
 namespace Katas.ReciboSupermercadoTest
 {
     public class ReciboSupermercadoTest
@@ -13,7 +13,7 @@ namespace Katas.ReciboSupermercadoTest
             var ofertaDeLaSemana = new Dictionary<string, IEstrategiaDePrecio>
             {
                 { "Manzanas", new DescuentoPorcentaje(0.5m) },
-                { "Pan", new PrecioRegular() }
+                { "Cajas de tomates", new DescuentoPorCombos(2,0.99m) },
             };
             _reciboSupermercado = new ReciboSupermercado(ofertaDeLaSemana);
         }
@@ -131,13 +131,11 @@ namespace Katas.ReciboSupermercadoTest
         public void Debe_UsarLasOfertasDeLaSemanaInyectadasEnElConstructor_EnLugarDeLasReglasInternas()
         {
             //Arrange
-     
 
-            //var reciboSuper = new ReciboSupermercado(ofertaDeLaSemana);
 
             var listaDeCompra = new List<ProductoComprado>
             {
-                new ProductoComprado("Manzana", 1, 1.99m, "Kilos"),
+                new ProductoComprado("Manzanas", 1, 1.99m, "Kilos"),
                 new ProductoComprado("Pan", 2, 0.50m)
             };
 
@@ -146,7 +144,7 @@ namespace Katas.ReciboSupermercadoTest
             Recibo reciboGenerado = _reciboSupermercado.ProcesarCompra(listaDeCompra);
 
             // Assert
-            var lineaManzanas = reciboGenerado.Lineas.First(l => l.Descripcion == "Manzana");
+            var lineaManzanas = reciboGenerado.Lineas.First(l => l.Descripcion == "Manzanas");
             var lineaPan = reciboGenerado.Lineas.First(l => l.Descripcion == "Pan");
 
             lineaManzanas.ValorTotal.Should().Be(1.00m);
