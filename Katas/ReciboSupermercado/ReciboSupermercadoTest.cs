@@ -95,6 +95,25 @@ namespace Katas.ReciboSupermercadoTest
             reciboGenerado.Lineas.Should().BeEmpty();
             reciboGenerado.TotalCompra.Should().Be(0m);
         }
+
+        [Fact]
+        public void Debe_ProcesarCompra_ProcesarUnaListaDeProductoSimple_DevolverUnaListaSinDescuento()
+        {
+            var reciboSuper = new ReciboSupermercado();
+            var listaDeCompras = new List<ProductoComprado>
+            {
+                new ProductoComprado("Shampo", 2, 1.0m, "Unidad")
+            };
+
+            Recibo reciboGenerado = reciboSuper.ProcesarCompra(listaDeCompras);
+
+            reciboGenerado.Lineas.Should().HaveCount(1);
+            var linea = reciboGenerado.Lineas[0];
+            linea.Descripcion.Should().Be("Shampo");
+            linea.Cantidad.Should().Be(1);
+            linea.ValorTotal.Should().Be(2.0m);
+            linea.ValorDescuento.Should().Be(0m);
+        }
     }
 
 }
