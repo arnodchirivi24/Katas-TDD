@@ -6,6 +6,18 @@ namespace Katas.ReciboSupermercadoTest
     public class ReciboSupermercadoTest
     {
 
+        private readonly ReciboSupermercado _reciboSupermercado;
+
+        public ReciboSupermercadoTest()
+        {
+            var ofertaDeLaSemana = new Dictionary<string, IEstrategiaDePrecio>
+            {
+                { "Manzanas", new DescuentoPorcentaje(0.5m) },
+                { "Pan", new PrecioRegular() }
+            };
+            _reciboSupermercado = new ReciboSupermercado(ofertaDeLaSemana);
+        }
+
         [Theory]
         [InlineData(7, 3.96, 2.97)]
         [InlineData(3, 1.98, 0.99)]
@@ -15,12 +27,11 @@ namespace Katas.ReciboSupermercadoTest
         {
             //Arrange      
             var valorUnidad = 0.99m;
-            var reciboSuper = new ReciboSupermercado();
             ResultadoCalculo resultado = new ResultadoCalculo((decimal)valorTotal, (decimal)valorDescuento);
             //Act
 
             //Assert
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, "Cepillo").Should().Be(resultado);
+            _reciboSupermercado.CalcularCostoTotal(unidades, valorUnidad, "Cepillo").Should().Be(resultado);
         }
 
         [Theory]
@@ -31,10 +42,10 @@ namespace Katas.ReciboSupermercadoTest
         {
             var valorUnidadKilo = 1.99m;
             var descripcionProducto = "Manzanas";
-            var reciboSuperMercado = new ReciboSupermercado();
+            //var reciboSuperMercado = new ReciboSupermercado();
             ResultadoCalculo resultado = new ResultadoCalculo((decimal)valorTotalEsperado, (decimal)valorDescuento);
 
-            reciboSuperMercado.CalcularCostoTotal(cantidadKilosComprada, valorUnidadKilo, descripcionProducto).Should().Be(resultado);
+            _reciboSupermercado.CalcularCostoTotal(cantidadKilosComprada, valorUnidadKilo, descripcionProducto).Should().Be(resultado);
         }
 
 
@@ -47,26 +58,26 @@ namespace Katas.ReciboSupermercadoTest
         {
             var valorUnidad = 2.49m;
             var descripcionProducto = "Arroz";
-            var reciboSuper = new ReciboSupermercado();
+        
             ResultadoCalculo resultado = new ResultadoCalculo((decimal)valorTotalEsperado, (decimal)valorDescuento);
 
-            reciboSuper.CalcularCostoTotal(unidad, valorUnidad, descripcionProducto).Should().Be(resultado);
+           _reciboSupermercado.CalcularCostoTotal(unidad, valorUnidad, descripcionProducto).Should().Be(resultado);
         }
 
 
         [Theory]
-        [InlineData(3, 5.37,0)]
+        [InlineData(3, 5.37, 0)]
         [InlineData(5, 7.49, 1.46)]
         [InlineData(10, 14.98, 2.92)]
-        [InlineData(7, 11.07,1.46)]
+        [InlineData(7, 11.07, 1.46)]
         public void Debe_CalcularCostoTotal_CuandoSeCompra_N_TubosDePastaDeDientes_DevuelveTotalDeEurosCorrespondiente(int unidades, double valorTotalEsperado, double valorDescuento)
         {
             var valorUnidad = 1.79m;
             var descripcionProducto = "Tubo de pasta de dientes";
-            var reciboSuper = new ReciboSupermercado();
+      
             ResultadoCalculo resultado = new ResultadoCalculo((decimal)valorTotalEsperado, (decimal)valorDescuento);
 
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(resultado);
+            _reciboSupermercado.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(resultado);
         }
 
 
@@ -79,16 +90,16 @@ namespace Katas.ReciboSupermercadoTest
         {
             var valorUnidad = 0.69m;
             var descripcionProducto = "Cajas de tomates";
-            var reciboSuper = new ReciboSupermercado();
+          
             ResultadoCalculo resultado = new ResultadoCalculo((decimal)valorTotalEsperado, (decimal)valorDescuento);
 
-            reciboSuper.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(resultado);
+            _reciboSupermercado.CalcularCostoTotal(unidades, valorUnidad, descripcionProducto).Should().Be(resultado);
         }
 
 
         [Theory]
         [InlineData("Shampo", 2, 1.0, "Unidad", 2.0, 0.0)]
-        [InlineData("Cajas de tomates", 2, 0.69, "Unidad", 0.99, 0.39)] 
+        [InlineData("Cajas de tomates", 2, 0.69, "Unidad", 0.99, 0.39)]
         public void Debe_ProcesarCompra_DevolverLineasCorrectas_ConOSinDescuento(
             string descripcion,
             int cantidad,
@@ -97,13 +108,13 @@ namespace Katas.ReciboSupermercadoTest
             decimal valorTotalEsperado,
             decimal valorDescuentoEsperado)
         {
-            var reciboSuper = new ReciboSupermercado();
+      
             var listaDeCompras = new List<ProductoComprado>
             {
                 new ProductoComprado(descripcion, cantidad, valorUnidad, unidadDeMedida)
             };
 
-            Recibo reciboGenerado = reciboSuper.ProcesarCompra(listaDeCompras);
+            Recibo reciboGenerado = _reciboSupermercado.ProcesarCompra(listaDeCompras);
 
             reciboGenerado.Lineas.Should().HaveCount(1);
 
@@ -114,5 +125,37 @@ namespace Katas.ReciboSupermercadoTest
             linea.ValorDescuento.Should().Be(valorDescuentoEsperado);
         }
 
+
+
+        [Fact]
+        public void Debe_UsarLasOfertasDeLaSemanaInyectadasEnElConstructor_EnLugarDeLasReglasInternas()
+        {
+            //Arrange
+     
+
+            //var reciboSuper = new ReciboSupermercado(ofertaDeLaSemana);
+
+            var listaDeCompra = new List<ProductoComprado>
+            {
+                new ProductoComprado("Manzana", 1, 1.99m, "Kilos"),
+                new ProductoComprado("Pan", 2, 0.50m)
+            };
+
+            //Act
+
+            Recibo reciboGenerado = _reciboSupermercado.ProcesarCompra(listaDeCompra);
+
+            // Assert
+            var lineaManzanas = reciboGenerado.Lineas.First(l => l.Descripcion == "Manzana");
+            var lineaPan = reciboGenerado.Lineas.First(l => l.Descripcion == "Pan");
+
+            lineaManzanas.ValorTotal.Should().Be(1.00m);
+            lineaManzanas.ValorDescuento.Should().Be(0.99m);
+
+            lineaPan.ValorTotal.Should().Be(1.00m);
+
+            reciboGenerado.TotalCompra.Should().Be(2.00m);
+
+        }
     }
 }

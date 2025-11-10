@@ -22,6 +22,11 @@ namespace Logica
     );
     public class ReciboSupermercado
     {
+        private Dictionary<string, IEstrategiaDePrecio> _ofertaDeLaSemana;
+        public ReciboSupermercado(Dictionary<string, IEstrategiaDePrecio> ofertaDeLaSemana)
+        {
+            _ofertaDeLaSemana = ofertaDeLaSemana;
+        }
         public record ResultadoCalculo(decimal ValorTotal, decimal ValorDescuento);
         public ResultadoCalculo CalcularCostoTotal(int unidades, decimal valorUnidad, string descripcionProducto)
         {
