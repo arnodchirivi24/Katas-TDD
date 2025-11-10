@@ -23,11 +23,45 @@ namespace Logica
     public class ReciboSupermercado
     {
         private Dictionary<string, IEstrategiaDePrecio> _ofertaDeLaSemana;
+        private readonly IEstrategiaDePrecio _precioRegular = new PrecioRegular();
         public ReciboSupermercado(Dictionary<string, IEstrategiaDePrecio> ofertaDeLaSemana)
         {
             _ofertaDeLaSemana = ofertaDeLaSemana;
         }
-        public record ResultadoCalculo(decimal ValorTotal, decimal ValorDescuento);
+
+        public Recibo ProcesarCompra(List<ProductoComprado> productos)
+        {
+            var lineasDelRecibo = new List<LineaDeRecibo>();
+
+            foreach (var producto in productos)
+            {
+                IEstrategiaDePrecio estrategia = _ofertaDeLaSemana.GetValueOrDefault(
+                    producto.Descripcion,
+                    _precioRegular
+                    );
+
+                ResultadoCalculo resultado = estrategia.CalcularCosto(
+                    producto.Cantidad,
+                    producto.ValorUnidad
+                );
+
+
+                var linea = new LineaDeRecibo(
+                    producto.Descripcion,
+                    producto.UnidadDeMedida,
+                    producto.Cantidad,
+                    resultado.ValorTotal,
+                    resultado.ValorDescuento
+                );
+
+                lineasDelRecibo.Add(linea);
+            }
+
+            decimal totalCompra = lineasDelRecibo.Sum(linea => linea.ValorTotal);
+
+            return new Recibo(lineasDelRecibo, totalCompra);
+        }
+
         public ResultadoCalculo CalcularCostoTotal(int unidades, decimal valorUnidad, string descripcionProducto)
         {
             switch (descripcionProducto)
@@ -97,33 +131,6 @@ namespace Logica
             return new ResultadoCalculo(valorTotal, valorDescuento);
         }
 
-        public Recibo ProcesarCompra(List<ProductoComprado> productos)
-        {
-            var lineasDelRecibo = new List<LineaDeRecibo>();
-
-            foreach(var producto in productos)
-            {
-                ResultadoCalculo resultado = CalcularCostoTotal(
-                    producto.Cantidad,
-                    producto.ValorUnidad,
-                    producto.Descripcion
-                );
-
-
-                var linea = new LineaDeRecibo(
-                    producto.Descripcion,
-                    producto.UnidadDeMedida,
-                    producto.Cantidad,
-                    resultado.ValorTotal,
-                    resultado.ValorDescuento
-                );
-
-                lineasDelRecibo.Add(linea);
-            }
-
-            decimal totalCompra = lineasDelRecibo.Sum(linea => linea.ValorTotal);
-
-            return new Recibo(lineasDelRecibo, totalCompra);
-        }
+       
     }
 }
