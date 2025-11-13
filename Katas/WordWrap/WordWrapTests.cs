@@ -13,7 +13,7 @@ public class WordWrapTests
 
     private string Wrap(string texto, int numeroColumnas)
     {
-        throw new NotImplementedException();
+        return "";
     }
 }
 
