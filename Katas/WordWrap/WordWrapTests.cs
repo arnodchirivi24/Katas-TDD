@@ -20,6 +20,14 @@ public class WordWrapTests
         result.Should().Be("this");
     }
 
+    [Fact]
+    public void Debe_WrapInsertarSaltoDeLinea_CuandoLongitudEs2YTextoMasLargo()
+    {
+        var result = Wrap("word", 2);
+
+        result.Should().Be("wo\nrd");
+    }
+
     private string Wrap(string texto, int numeroColumnas)
     {
         return numeroColumnas == 10 ? texto : "";
