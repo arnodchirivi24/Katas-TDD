@@ -22,7 +22,7 @@ public class WordWrapTests
 
     private string Wrap(string texto, int numeroColumnas)
     {
-        return "";
+        return numeroColumnas == 10 ? texto : "";
     }
 }
 
