@@ -28,6 +28,14 @@ public class WordWrapTests
         result.Should().Be("wo\nrd");
     }
 
+    [Fact]
+    public void Debe_WrapInsertarSaltoDeLinea_CuandoLongitudEs3YTextoMasLargo()
+    {
+        var result = Wrap("abcdefghij", 3);
+
+        result.Should().Be("abc\ndef\nghi\nj");
+    }
+
     private string Wrap(string texto, int numeroColumnas)
     {
         if(numeroColumnas == 2)
