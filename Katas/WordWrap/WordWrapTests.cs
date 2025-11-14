@@ -11,6 +11,15 @@ public class WordWrapTests
         result.Should().Be("");
     }
 
+
+    [Fact]
+    public void Debe_WrapDevolverElTextoThisEnUnaSolaLinea()
+    {
+        var result = Wrap("this", 10);
+
+        result.Should().Be("this");
+    }
+
     private string Wrap(string texto, int numeroColumnas)
     {
         return "";
