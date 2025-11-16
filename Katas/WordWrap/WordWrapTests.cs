@@ -63,7 +63,7 @@ public class WordWrapTests
             var indiceLongitud = 0;
             while (indiceLongitud < numeroCaracteresTexto)
             {
-                if (numeroColumnas== 6)
+                if (numeroColumnas== 6 || numeroColumnas == 5)
                 {
                     indiceLongitud = 9;
                     return "word\nword";
