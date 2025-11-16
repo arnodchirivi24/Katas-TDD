@@ -64,17 +64,28 @@ public class WordWrapTests
 
     private string Wrap(string texto, int numeroColumnas)
     {
-        var numeroCaracteresTexto = texto.Length;
+        var numeroCaracteresTexto = texto.Replace(" ", "").Length;
         StringBuilder stringBuilder = new StringBuilder();
         if (numeroColumnas < numeroCaracteresTexto)
         {
             var indiceLongitud = 0;
             while (indiceLongitud < numeroCaracteresTexto)
             {
-                if (numeroColumnas== 6 || numeroColumnas == 5)
+                if (texto.Any(char.IsWhiteSpace))
                 {
-                    indiceLongitud = 9;
-                    return "word\nword";
+                    var arrayDeTextos = texto.Split(' ');
+
+                    foreach (var textoI in arrayDeTextos)
+                    {
+                        stringBuilder.Append(textoI);
+                        indiceLongitud += textoI.Length;
+                        if (indiceLongitud +1 < numeroCaracteresTexto)
+                        {
+                            stringBuilder.Append("\n");
+                        }
+                    }
+                    return stringBuilder.ToString();
+                    
                 }
                 int longitudFragmentoTexto = Math.Min(numeroColumnas, numeroCaracteresTexto - indiceLongitud);
                 string fragmentoTexto = texto.Substring(indiceLongitud, longitudFragmentoTexto);
