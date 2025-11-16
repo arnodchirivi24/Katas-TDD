@@ -61,6 +61,14 @@ public class WordWrapTests
 
         result.Should().Be("word\nword\nword");
     }
+    
+    [Fact]
+    public void Debe_Wrap_MantenerVariasPalabrasEnUnaLinea_SiCabenEnElLimiteDeColumnas()
+    {
+        var result = Wrap("word word word", 11);
+
+        result.Should().Be("word word\nword");
+    }
 
     private string Wrap(string texto, int numeroColumnas)
     {
