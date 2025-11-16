@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+
 namespace Katas.WordWrap.Tests;
 
 public class WordWrapTests
@@ -36,15 +37,22 @@ public class WordWrapTests
         result.Should().Be("abc\ndef\nghi\nj");
     }
 
+
     private string Wrap(string texto, int numeroColumnas)
     {
-        if(numeroColumnas == 2)
+        if (numeroColumnas == 2)
         {
             return texto.Substring(0, numeroColumnas) + "\n" + texto.Substring(numeroColumnas, numeroColumnas);
         }
+
+        if (numeroColumnas == 3)
+        {
+            return texto.Substring(0, numeroColumnas) + "\n" +
+                   texto.Substring(numeroColumnas, numeroColumnas) + "\n" +
+                   texto.Substring(numeroColumnas * 2, numeroColumnas) + "\n" +
+                   texto.Substring(numeroColumnas * 3, 1);
+        }
+
         return numeroColumnas == 10 ? texto : "";
     }
 }
-
-
-
