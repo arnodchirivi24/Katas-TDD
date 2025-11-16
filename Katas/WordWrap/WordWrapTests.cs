@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System.Text;
+using FluentAssertions;
 
 namespace Katas.WordWrap.Tests;
 
@@ -36,23 +37,31 @@ public class WordWrapTests
 
         result.Should().Be("abc\ndef\nghi\nj");
     }
-
+    
 
     private string Wrap(string texto, int numeroColumnas)
     {
-        if (numeroColumnas == 2)
+        var numeroCaracteresTexto = texto.Length;
+        StringBuilder stringBuilder = new StringBuilder();
+        if (numeroColumnas < numeroCaracteresTexto)
         {
-            return texto.Substring(0, numeroColumnas) + "\n" + texto.Substring(numeroColumnas, numeroColumnas);
+            var indiceLongitud = 0;
+            while (indiceLongitud < numeroCaracteresTexto)
+            {
+                int longitudFragmentoTexto = Math.Min(numeroColumnas, numeroCaracteresTexto - indiceLongitud);
+                string fragmentoTexto = texto.Substring(indiceLongitud, longitudFragmentoTexto);
+                
+                stringBuilder.Append(fragmentoTexto);
+                indiceLongitud += longitudFragmentoTexto;
+                
+                if (indiceLongitud < numeroCaracteresTexto)
+                {
+                    stringBuilder.Append("\n");
+                }
+            }
+            return stringBuilder.ToString();
         }
-
-        if (numeroColumnas == 3)
-        {
-            return texto.Substring(0, numeroColumnas) + "\n" +
-                   texto.Substring(numeroColumnas, numeroColumnas) + "\n" +
-                   texto.Substring(numeroColumnas * 2, numeroColumnas) + "\n" +
-                   texto.Substring(numeroColumnas * 3, 1);
-        }
-
+        
         return numeroColumnas == 10 ? texto : "";
     }
 }
