@@ -38,6 +38,14 @@ public class WordWrapTests
         result.Should().Be("abc\ndef\nghi\nj");
     }
     
+    [Fact]
+    public void Debe_Wrap_CuandoColumnasEs6_DebeRomperLaFraseEnBloquesDe2ConSaltosDeLineaCuandoTienenUnEspacio()
+    {
+        var result = Wrap("word word", 6);
+
+        result.Should().Be("word\nword");
+    }    
+    
 
     private string Wrap(string texto, int numeroColumnas)
     {
