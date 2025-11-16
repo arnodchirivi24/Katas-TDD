@@ -53,6 +53,14 @@ public class WordWrapTests
 
         result.Should().Be("word\nword");
     }
+    
+    [Fact]
+    public void Debe_Wrap_CuandoColumnasEs6_DebeRomperLaFraseEnBloquesDe3ConSaltosDeLineaCuandoTienenUnEspacioYLaCantidadDeCaracteresSeaMenorALaCantidadColumas()
+    {
+        var result = Wrap("word word word", 6);
+
+        result.Should().Be("word\nword\nword");
+    }
 
     private string Wrap(string texto, int numeroColumnas)
     {
