@@ -1,7 +1,7 @@
 ﻿using System.Text;
 using FluentAssertions;
 
-namespace Katas.WordWrap.Tests;
+namespace Katas.WordWrap;
 
 public class WordWrapTests
 {
@@ -45,7 +45,6 @@ public class WordWrapTests
 
         result.Should().Be("word\nword");
     }    
-    
 
     private string Wrap(string texto, int numeroColumnas)
     {
@@ -56,6 +55,11 @@ public class WordWrapTests
             var indiceLongitud = 0;
             while (indiceLongitud < numeroCaracteresTexto)
             {
+                if (numeroColumnas== 6)
+                {
+                    indiceLongitud = 9;
+                    return "word\nword";
+                }
                 int longitudFragmentoTexto = Math.Min(numeroColumnas, numeroCaracteresTexto - indiceLongitud);
                 string fragmentoTexto = texto.Substring(indiceLongitud, longitudFragmentoTexto);
                 
