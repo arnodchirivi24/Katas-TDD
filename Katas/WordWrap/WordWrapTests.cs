@@ -64,6 +64,11 @@ public class WordWrapTests
 
     private string Wrap(string texto, int numeroColumnas)
     {
+        
+        if (string.IsNullOrEmpty(texto) || texto.Length <= numeroColumnas)
+        {
+            return texto;
+        }
         var numeroCaracteresTexto = texto.Replace(" ", "").Length;
         StringBuilder stringBuilder = new StringBuilder();
         if (numeroColumnas < numeroCaracteresTexto)
@@ -98,9 +103,7 @@ public class WordWrapTests
                     stringBuilder.Append("\n");
                 }
             }
-            return stringBuilder.ToString();
         }
-        
-        return numeroColumnas == 10 ? texto : "";
+        return stringBuilder.ToString();
     }
 }
